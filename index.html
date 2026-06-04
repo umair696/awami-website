@@ -3,125 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awami Rahnuma | The Elite Digital Agency</title>
+    <title>Awami Rahnuma | The Elite Digital Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Noto Nastaliq Urdu', serif; background-color: #030712; color: #f3f4f6; overflow-x: hidden; }
+        body { font-family: 'Noto Nastaliq Urdu', serif; background-color: #030712; color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; }
         .font-eng { font-family: 'Inter', sans-serif; }
         
-        /* Premium Glass Navbar */
-        .glass-navbar { background: rgba(11, 17, 34, 0.85); backdrop-filter: blur(25px); border-b: 1px solid rgba(34, 211, 238, 0.15); }
-        
-        /* Ticker Animation */
-        .vision-flash-ticker { background: linear-gradient(90deg, #0f172a 0%, #7c2d12 50%, #0f172a 100%); border-bottom: 2px solid #fbbf24; }
-        .ticker-text-wrapper { display: inline-block; white-space: nowrap; animation: runTicker 35s linear infinite; }
-        @keyframes runTicker { 0% { transform: translate3d(20%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        /* Ultra Premium Glass UI */
+        .glass-nav { background: rgba(3, 7, 18, 0.7); backdrop-filter: blur(24px); border-b: 1px solid rgba(34, 211, 238, 0.1); }
+        .bento-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.6) 0%, rgba(3, 7, 18, 0.8) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bento-card:hover { border-color: rgba(34, 211, 238, 0.3); transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(34, 211, 238, 0.15); }
 
-        /* Floating Background Glows */
-        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: -1; }
-        .glow-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(34, 211, 238, 0.15); }
-        .glow-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: rgba(59, 130, 246, 0.15); }
+        /* Typography Locks (No Overlapping) */
+        .hero-title-en { font-size: clamp(1.5rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+        .hero-title-ur { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.6; }
+        
+        /* Glowing Accent Text */
+        .text-glow-cyan { text-shadow: 0 0 30px rgba(34,211,238,0.5); }
+        
+        /* Interactive Modal (Popups) */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px); z-index: 100; display: none; opacity: 0; transition: opacity 0.3s ease; justify-content: center; items-center; padding: 1rem; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content { background: #0f172a; border: 1px solid rgba(34, 211, 238, 0.2); width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; border-radius: 1.5rem; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        
+        /* Smooth Scrollbar for Modals */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #22d3ee; }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-white relative min-h-screen flex flex-col">
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
 
-    <div class="glow-orb glow-1"></div>
-    <div class="glow-orb glow-2"></div>
+    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-[40%] right-[-10%] w-[40vw] h-[40vw] bg-blue-700/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <div class="vision-flash-ticker py-2 overflow-hidden">
-        <div class="ticker-text-wrapper flex items-center gap-8">
-            <span class="font-eng text-[11px] font-extrabold text-amber-400 uppercase tracking-widest">🌟 GLOBAL VISION: We don't just advertise, we make your brand the market leader!</span>
-            <span class="text-white text-xs font-bold">|</span>
-            <span class="text-white text-sm font-bold">ہمارا ہدف صرف اشتہارات چلانا نہیں، بلکہ آپ کے برانڈ کو مارکیٹ کا لیڈر بنانا ہے!</span>
-            <span class="font-eng text-[11px] font-extrabold text-cyan-400 uppercase tracking-widest">🚀 100% AUTOMATED ECOSYSTEM IS ACTIVE</span>
-        </div>
-    </div>
-
-    <nav class="glass-navbar sticky top-0 z-50 px-6 py-4 shadow-2xl">
-        <div class="container mx-auto flex justify-between items-center">
+    <nav class="glass-nav sticky top-0 z-50 px-6 py-4">
+        <div class="container mx-auto max-w-7xl flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer">
-                <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center font-eng font-black text-xl text-white shadow-[0_0_20px_rgba(34,211,238,0.5)]">AR</div>
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center font-eng font-black text-white shadow-[0_0_15px_rgba(34,211,238,0.4)]">AR</div>
                 <div class="flex flex-col">
-                    <h1 class="text-xl md:text-2xl font-black font-eng text-white tracking-widest leading-none"><span class="text-cyan-400">AWAMI</span> <span class="text-amber-400">RAHNUMA</span></h1>
-                    <span class="text-[9px] font-eng tracking-[0.28em] text-gray-400 uppercase mt-1">Digital Solutions Agency</span>
+                    <h1 class="text-xl font-black font-eng text-white tracking-widest leading-none">AWAMI <span class="text-amber-400">RAHNUMA</span></h1>
+                    <span class="text-[8px] font-eng tracking-[0.3em] text-cyan-400 uppercase mt-1">Digital Ecosystem</span>
                 </div>
             </div>
             
-            <div class="hidden md:flex items-center gap-8 font-bold text-sm">
-                <a href="#" class="text-cyan-400 border-b-2 border-cyan-400 pb-1 flex flex-col items-center">
-                    <span>ہوم پیج</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Home</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-cyan-400 transition flex flex-col items-center">
-                    <span>ہماری سروسز</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Services</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-cyan-400 transition flex flex-col items-center">
-                    <span>پورٹ فولیو</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Portfolio</span>
-                </a>
-                <div class="bg-cyan-500/10 text-cyan-400 px-4 py-1.5 rounded-lg border border-cyan-500/30 font-eng font-bold text-xs tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.2)]">
-                    ● SYSTEM ACTIVE
-                </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="font-eng text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-cyan-400 transition">Services / خدمات</a>
+                <a href="#trust" class="font-eng text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-cyan-400 transition">Why Us / ہم کیوں؟</a>
+                <button class="bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-full border border-cyan-500/30 font-eng font-bold text-xs tracking-widest uppercase hover:bg-cyan-500/20 transition">
+                    Order Desk
+                </button>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow flex flex-col justify-center items-center py-16 px-4 z-10 relative">
-        <div class="container mx-auto max-w-6xl flex flex-col items-center">
+    <header class="relative pt-24 pb-16 px-4">
+        <div class="container mx-auto max-w-5xl text-center space-y-8">
             
-            <div class="bg-slate-900/80 border border-cyan-500/30 px-6 py-2 rounded-full mb-8 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                <span class="font-eng text-[10px] md:text-xs text-cyan-400 font-bold tracking-widest uppercase">The All-In-One Digital Agency</span>
+            <div class="inline-block border border-slate-700 bg-slate-900/50 rounded-full px-4 py-1.5 mb-4">
+                <span class="font-eng text-[10px] uppercase tracking-[0.2em] text-gray-400"><span class="text-emerald-400 mr-2">●</span> The Global Standard Agency</span>
             </div>
 
-            <div class="text-center space-y-4 mb-8 w-full">
-                <h1 class="font-eng text-3xl md:text-5xl font-black text-white tracking-wider uppercase leading-tight">
-                    Scale Your Business <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">10x Faster</span>
-                </h1>
-                <h2 class="text-3xl md:text-5xl font-bold text-white leading-relaxed mt-2">
-                    اپنے برانڈ کو <span class="text-amber-400 drop-shadow-[0_0_15px_rgba(251,191,36,0.5)]">مارکیٹ کا لیڈر</span> بنائیں
+            <div class="space-y-4">
+                <h2 class="font-eng hero-title-en font-black text-white">
+                    SCALE YOUR BRAND <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">10X FASTER</span>
                 </h2>
+                <h1 class="hero-title-ur font-bold text-gray-300">
+                    روایتی طریقوں کو چھوڑیں، جدید ڈیجیٹل دور کے <span class="text-amber-400 text-glow-cyan">لیڈر بنیں۔</span>
+                </h1>
             </div>
 
-            <p class="text-gray-300 text-sm md:text-lg text-center max-w-4xl mx-auto leading-loose mb-12 px-4 border-t border-b border-slate-800 py-6 bg-slate-900/30 rounded-2xl">
-                ہم روایتی طریقوں اور سستے دعوؤں کو بھول جائیں۔ ہم آپ کے بزنس کے لیے پرائیویٹ کلاؤڈ سرورز پر ایسا <strong class="text-cyan-400">مکمل خودکار (Automated) سیلز فنل</strong> بناتے ہیں، جو آپ کے سوتے وقت بھی لیڈز کو کلائنٹس میں بدلتا ہے۔ ایک ہی چھت تلے تمام پریمیم سروسز حاصل کریں۔
+            <p class="font-eng text-gray-400 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
+                Awami Rahnuma is an all-in-one digital ecosystem. We replace outdated marketing with advanced Cloud AI Automation, High-Retention Video Ads, and Data-Driven Strategies to completely automate your sales.
+            </p>
+            <p class="text-gray-400 text-sm md:text-lg max-w-3xl mx-auto leading-loose border-t border-slate-800 pt-6 mt-6">
+                ہمارا مقصد صرف آپ کے اشتہارات چلانا نہیں ہے، بلکہ آپ کے کاروبار کے لیے ایک ایسا خودکار نظام (Ecosystem) بنانا ہے جو آپ کے سوتے وقت بھی آپ کے لیے کسٹمرز اور منافع لاتا رہے۔
             </p>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-5xl mb-12">
-                <div class="bg-slate-900/80 border border-slate-700 p-6 rounded-2xl text-center hover:border-cyan-400 hover:transform hover:-translate-y-2 transition-all shadow-lg">
-                    <span class="text-4xl block mb-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">🤖</span>
-                    <span class="font-bold text-white block text-sm md:text-base">واٹس ایپ آٹومیشن</span>
-                    <span class="font-eng text-[9px] md:text-[10px] text-cyan-400 uppercase mt-2 block tracking-wider">AI Chatbots & API</span>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-700 p-6 rounded-2xl text-center hover:border-cyan-400 hover:transform hover:-translate-y-2 transition-all shadow-lg">
-                    <span class="text-4xl block mb-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">🎬</span>
-                    <span class="font-bold text-white block text-sm md:text-base">ویڈیو ایڈز و ایڈیٹنگ</span>
-                    <span class="font-eng text-[9px] md:text-[10px] text-cyan-400 uppercase mt-2 block tracking-wider">Video Production</span>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-700 p-6 rounded-2xl text-center hover:border-cyan-400 hover:transform hover:-translate-y-2 transition-all shadow-lg">
-                    <span class="text-4xl block mb-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">📈</span>
-                    <span class="font-bold text-white block text-sm md:text-base">سوشل میڈیا مارکیٹنگ</span>
-                    <span class="font-eng text-[9px] md:text-[10px] text-cyan-400 uppercase mt-2 block tracking-wider">SMM & Leads</span>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-700 p-6 rounded-2xl text-center hover:border-cyan-400 hover:transform hover:-translate-y-2 transition-all shadow-lg">
-                    <span class="text-4xl block mb-3 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">🎨</span>
-                    <span class="font-bold text-white block text-sm md:text-base">گرافکس و ڈویلپمنٹ</span>
-                    <span class="font-eng text-[9px] md:text-[10px] text-cyan-400 uppercase mt-2 block tracking-wider">Branding & Web</span>
-                </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto justify-center px-4">
-                <button class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 px-10 py-5 rounded-2xl flex flex-col items-center justify-center min-w-[280px] shadow-[0_0_25px_rgba(34,211,238,0.4)] transition-all transform hover:scale-105 border border-cyan-400/50">
-                    <span class="text-xl font-bold mb-1 text-white">اپنی سروس بک کریں</span>
-                    <span class="font-eng text-[10px] uppercase tracking-widest text-white/80">Book Your Service</span>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-8">
+                <button class="bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-xl font-eng font-bold text-sm uppercase tracking-widest transition-all">
+                    Initialize Project / پروجیکٹ شروع کریں
                 </button>
-                <button class="bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-amber-400 text-white px-10 py-5 rounded-2xl transition-all flex flex-col items-center justify-center min-w-[280px]">
-                    <span class="text-xl font-bold mb-1 text-amber-400">ہمارا پورٹ فولیو دیکھیں</span>
-                    <span class="font-eng text-[10px] uppercase tracking-widest text-gray-400">View Global Portfolio</span>
+                <button class="bg-transparent border border-slate-600 text-white hover:border-cyan-400 px-8 py-4 rounded-xl font-eng font-bold text-sm uppercase tracking-widest transition-all">
+                    Explore Ecosystem
                 </button>
             </div>
-
         </div>
-    </main>
+    </header>
 
+    <section id="services" class="py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="text-center mb-12">
+                <h3 class="font-eng text-xs font-bold text-cyan-400 uppercase tracking-widest mb-2">Our Solutions</h3>
+                <h2 class="text-3xl font-bold text-white">ہماری پریمیم ڈیجیٹل سروسز</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bento-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-2xl mb-6 border border-cyan-500/20">🤖</div>
+                        <h4 class="font-eng text-xl font-bold text-white mb-1">WhatsApp Cloud Automation</h4>
+                        <h5 class="text-lg font-bold text-gray-300 mb-4">واٹس ایپ بزنس آٹومیشن</h5>
+                        <p class="text-sm text-gray-400 leading-relaxed font-sans mb-6">
+                            اپنی سیلز ٹیم کا 90% بوجھ ختم کریں۔ کسٹمر کے پہلے میسج سے فائنل ڈیل تک کا سفر روبوٹک سسٹم کے ذریعے 100% خودکار بنائیں۔
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-automation')" class="text-cyan-400 hover:text-white font-eng text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition w-max">
+                        View Detailed Architecture <span class="text-lg">→</span>
+                    </button>
+                </div>
+
+                <div class="bento-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-2xl mb-6 border border-purple-500/20">🎬</div>
+                        <h4 class="font-eng text-xl font-bold text-white mb-1">High-Converting Video Ads</h4>
+                        <h5 class="text-lg font-bold text-gray-300 mb-4">ویڈیو اشتہارات و ایڈیٹنگ</h5>
+                        <p class="text-sm text-gray-400 leading-relaxed font-sans mb-6">
+                            نفسیاتی مارکیٹنگ اور 3-سیکنڈ ہک (Hook) کے ذریعے ایسے ویڈیو اشتہارات کی تیاری جو دیکھنے والے کو خریدار بننے پر مجبور کر دیں۔
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-videos')" class="text-purple-400 hover:text-white font-eng text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition w-max">
+                        Explore Video Strategies <span class="text-lg">→</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="trust" class="py-16 px-4 bg-slate-900/30 border-y border-slate-800/50 mt-12">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="font-eng text-[10px] font-bold bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 tracking-widest uppercase">The Awami Edge</span>
+                    <h2 class="font-eng text-3xl font-black text-white">100% Anti-Fraud Guarantee</h2>
+                    <h3 class="text-2xl font-bold text-amber-400">مکمل سیکیورٹی اور ذہنی سکون</h3>
+                    <p class="text-gray-400 text-sm leading-loose font-sans">
+                        پاکستان میں آن لائن کام کرواتے وقت سب سے بڑا ڈر فراڈ کا ہوتا ہے۔ ہم کسٹمر کو اندھیرے میں نہیں رکھتے۔ پیمنٹ ہوتے ہی آپ کو ایک لائیو <strong class="text-white">Order ID</strong> دی جاتی ہے جس سے آپ کسی بھی وقت اپنے پروجیکٹ کی لائیو پروگریس خود ٹریک کر سکتے ہیں۔
+                    </p>
+                    <button onclick="openModal('modal-trust')" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl border border-slate-600 font-eng text-xs font-bold uppercase tracking-widest transition">
+                        Read Full Security Policy
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bento-card p-6 rounded-2xl text-center">
+                        <div class="text-3xl mb-3">🌍</div>
+                        <h4 class="font-eng font-bold text-white text-sm mb-1">Global Remote Model</h4>
+                        <p class="text-[10px] text-gray-500 font-sans">مہنگے دفاتر کے بجائے ہم دنیا بھر کے بہترین مہرین پر سرمایہ کاری کرتے ہیں۔</p>
+                    </div>
+                    <div class="bento-card p-6 rounded-2xl text-center">
+                        <div class="text-3xl mb-3">💸</div>
+                        <h4 class="font-eng font-bold text-white text-sm mb-1">Refund Protection</h4>
+                        <p class="text-[10px] text-gray-500 font-sans">کام شروع ہونے سے پہلے 100% ریفنڈ اور لامحدود ترامیم کی سہولت۔</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-automation" class="modal-overlay">
+        <div class="modal-content p-8 flex flex-col">
+            <div class="flex justify-between items-start border-b border-slate-700 pb-4 mb-6">
+                <div>
+                    <h3 class="font-eng text-2xl font-black text-cyan-400">WhatsApp Business Automation</h3>
+                    <h4 class="text-xl font-bold text-white mt-1">واٹس ایپ کلاؤڈ آٹومیشن مکمل سیٹ اپ</h4>
+                </div>
+                <button onclick="closeModals()" class="text-gray-500 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="space-y-6 text-gray-300 text-sm font-sans leading-relaxed">
+                <p>ہم کلائنٹ کو صرف ایک عام بوٹ بنا کر نہیں دیتے، بلکہ ان کا پورا سیلز اور سپورٹ سسٹم آٹومیٹک کر دیتے ہیں۔</p>
+                <ul class="space-y-4 font-eng">
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-white block mb-1">1. Cloud Server Integration (VPS)</strong> کلاؤڈ سرور کے ذریعے آپ کا سسٹم 24/7 بغیر موبائل انٹرنیٹ کے چلتا ہے۔</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-white block mb-1">2. Official Meta API</strong> فیس بک کے ڈویلپر پورٹل کے ذریعے سیٹ اپ، جس سے نمبر بین (Ban) ہونے کا خطرہ 0% ہو جاتا ہے۔</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-white block mb-1">3. Hybrid System (AI + Live Agent)</strong> بوٹ کے مینو کے ساتھ ساتھ، کسٹمر کے چاہنے پر لائیو ایجنٹ کو چیٹ ٹرانسفر کرنے کی سہولت۔</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-videos" class="modal-overlay">
+        <div class="modal-content p-8 flex flex-col">
+            <div class="flex justify-between items-start border-b border-slate-700 pb-4 mb-6">
+                <div>
+                    <h3 class="font-eng text-2xl font-black text-purple-400">High-Converting Video Ads</h3>
+                    <h4 class="text-xl font-bold text-white mt-1">وائرل ویڈیو اشتہارات و ایڈیٹنگ</h4>
+                </div>
+                <button onclick="closeModals()" class="text-gray-500 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="space-y-6 text-gray-300 text-sm font-sans leading-relaxed">
+                <p>عام ایڈیٹرز صرف ویڈیوز کو کاٹ کر جوڑتے ہیں، لیکن ہم ایسی ویڈیوز بناتے ہیں جو دیکھنے والے کو خریدار (Buyer) میں بدل دیتی ہیں۔</p>
+                <ul class="space-y-4 font-eng">
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-amber-400 block mb-1">The 3-Second Hook Strategy</strong> ویڈیو کے شروع میں ایسا سسپنس کہ سوشل میڈیا پر سکرولنگ کرتا ہوا کسٹمر ویڈیو پوری دیکھنے پر مجبور ہو جائے۔</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-amber-400 block mb-1">Psychological Editing</strong> برانڈ کے رنگوں، تیز کٹس اور ساؤنڈ ایفیکٹس (SFX) کا ایسا توازن جو کسٹمر کو بور نہیں ہونے دیتا۔</li>
+                    <li class="bg-slate-800/50 p-4 rounded-xl border border-slate-700"><strong class="text-amber-400 block mb-1">Advanced Subtitles & Motion Graphics</strong> جدید اینیمیشنز تاکہ بغیر آواز کے بھی ویڈیو کا پیغام 100% سمجھ آئے۔</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-trust" class="modal-overlay">
+        <div class="modal-content p-8 flex flex-col">
+            <div class="flex justify-between items-start border-b border-slate-700 pb-4 mb-6">
+                <div>
+                    <h3 class="font-eng text-2xl font-black text-emerald-400">Trust & Anti-Fraud Policy</h3>
+                    <h4 class="text-xl font-bold text-white mt-1">ہمارا سیکیورٹی اور اعتماد کا نظام</h4>
+                </div>
+                <button onclick="closeModals()" class="text-gray-500 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="space-y-6 text-gray-300 text-sm font-sans leading-relaxed">
+                <p>عوامی رہنما پاکستان کا ایک پریمیم اور انتہائی محفوظ ڈیجیٹل برانڈ ہے۔ ہم کسٹمرز کے ڈیٹا اور پرائیویسی پر کوئی سمجھوتہ نہیں کرتے۔</p>
+                <div class="grid grid-cols-1 gap-4 font-eng">
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                        <h5 class="text-white font-bold mb-2 flex items-center gap-2"><span>🛡️</span> Live Order Tracking ID</h5>
+                        <p class="text-xs text-gray-400">پیمنٹ وصول ہوتے ہی آپ کو ایک آفیشل Order ID دی جاتی ہے۔ آپ کسی بھی وقت اپنے پروجیکٹ کا کرنٹ اسٹیٹس چیک کر سکتے ہیں۔ ہر چیز شیشے کی طرح صاف ہے۔</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                        <h5 class="text-white font-bold mb-2 flex items-center gap-2"><span>🏢</span> Why No Traditional Office?</h5>
+                        <p class="text-xs text-gray-400">ہم پرانے دور کے دفاتر اور فالتو بلوں پر پیسے ضائع کرنے کے بجائے وہ سرمایہ ٹیکنالوجی اور دنیا کے بہترین ریموٹ مہرین پر لگاتے ہیں، تاکہ آپ کو کم قیمت میں انٹرنیشنل کوالٹی ملے۔</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                        <h5 class="text-white font-bold mb-2 flex items-center gap-2"><span>💸</span> Refund & Revisions Policy</h5>
+                        <p class="text-xs text-gray-400">کام شروع ہونے سے پہلے 100% ریفنڈ کی گارنٹی۔ کام کے دوران اگر پسند نہ آئے تو لامحدود ترامیم (Unlimited Revisions) فراہم کی جاتی ہیں۔</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Control System
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+
+        // Close modal when clicking outside the content box
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) { closeModals(); }
+            });
+        });
+    </script>
 </body>
 </html>
