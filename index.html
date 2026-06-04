@@ -9,49 +9,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     
     <style>
-        body { font-family: 'Noto Nastaliq Urdu', serif; background-color: #030712; color: #f3f4f6; overflow-x: hidden; }
+        body { font-family: 'Noto Nastaliq Urdu', serif; background-color: #030712; color: #f3f4f6; overflow-x: hidden; scroll-behavior: smooth; }
         .font-eng { font-family: 'Inter', sans-serif; }
         
-        /* Ultra High-End Crystal Glassmorphism */
-        .glass-navbar { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-b: 1px solid rgba(34, 211, 238, 0.15); }
-        .glass-card { background: rgba(11, 17, 34, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(34, 211, 238, 0.2); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+        /* Premium Glassmorphism */
+        .glass-navbar { background: rgba(11, 17, 34, 0.8); backdrop-filter: blur(20px); border-b: 1px solid rgba(34, 211, 238, 0.15); }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(25px); border: 1px solid rgba(34, 211, 238, 0.15); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
         
-        /* Google UI 2026 Fluid Breathing Glow Logic */
-        .premium-field-group { position: relative; display: flex; flex-col: column; width: 100%; }
+        /* Strict No-Overlap Bilingual Labels */
+        .label-ur { display: block; font-size: 1.125rem; font-weight: 700; color: #f3f4f6; margin-bottom: 4px; text-align: right; }
+        .label-en { display: block; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; color: #22d3ee; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; text-align: right; }
+
+        /* Google I/O Fluid Glow Fields */
         .premium-input { background: rgba(31, 41, 55, 0.4); border: 2px solid #1f2937; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); font-family: sans-serif; }
         .premium-input:focus { outline: none; background: #070d1e; border-color: #22d3ee; transform: scale(1.01); box-shadow: 0 0 30px rgba(34, 211, 238, 0.4); animation: fluidGlow 2.5s infinite ease-in-out; }
-        
-        @keyframes fluidGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); border-color: #22d3ee; }
-            50% { box-shadow: 0 0 35px rgba(34, 211, 238, 0.6); border-color: #fbbf24; }
-        }
+        @keyframes fluidGlow { 0%, 100% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); border-color: #22d3ee; } 50% { box-shadow: 0 0 35px rgba(34, 211, 238, 0.6); border-color: #fbbf24; } }
 
         .input-valid { border-color: #10b981 !important; box-shadow: 0 0 20px rgba(16, 185, 129, 0.25) !important; }
         .input-error { border-color: #ef4444 !important; box-shadow: 0 0 20px rgba(239, 68, 68, 0.25) !important; }
         
-        /* Flash Ticker Setup */
+        /* Flash Ticker */
         .vision-flash-ticker { background: linear-gradient(90deg, #0f172a 0%, #7c2d12 50%, #0f172a 100%); border-bottom: 2px solid #fbbf24; }
         .ticker-text-wrapper { display: inline-block; white-space: nowrap; animation: runTicker 30s linear infinite; }
         @keyframes runTicker { 0% { transform: translate3d(20%, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* International Flag Fix */
+        /* Phone Field Glitch Fix */
         .phone-input-container { direction: ltr !important; display: block; position: relative; width: 100%; }
         .iti { width: 100% !important; direction: ltr !important; }
         .iti__country-list { background-color: #0f172a !important; color: #fff !important; border: 1px solid #374151 !important; text-align: left !important; z-index: 100; }
         
+        /* Interactive Cards & Checkmarks */
         .indicator-checkmark { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #10b981; opacity: 0; transition: all 0.3s ease; z-index: 10; }
         .active-checkmark { opacity: 1; }
-
-        /* Package Grid Interactions */
-        .package-select-card { background: rgba(31, 41, 55, 0.25); border: 2px solid #1f2937; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .package-select-card { background: rgba(31, 41, 55, 0.25); border: 2px solid #1f2937; transition: all 0.3s ease; cursor: pointer; }
         .package-select-card:hover { border-color: #22d3ee; transform: translateY(-3px); }
         .package-card-active { border-color: #fbbf24 !important; background: rgba(251, 191, 36, 0.08) !important; }
         .ui-radio-circle { width: 18px; height: 18px; border: 2px solid #4b5563; border-radius: 50%; display: inline-block; position: relative; transition: all 0.3s ease; }
         .package-card-active .ui-radio-circle { border-color: #fbbf24; background: #fbbf24; box-shadow: 0 0 12px #fbbf24; }
-
-        /* Payment Channel Tabs */
         .gateway-tab { border: 2px solid #1f2937; background: rgba(15, 23, 42, 0.4); transition: all 0.3s ease; }
         .gateway-tab-active { border-color: #22d3ee !important; background: rgba(34, 211, 238, 0.1) !important; box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
+
+        /* SPA Navigation Tabs */
+        .nav-link { cursor: pointer; position: relative; padding-bottom: 4px; transition: all 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: #22d3ee; transition: all 0.3s; transform: translateX(-50%); }
+        .nav-link-active { color: #22d3ee; }
+        .nav-link-active::after { width: 100%; }
+        
+        /* App Sections (Tabs) */
+        .app-section { display: none; opacity: 0; transition: opacity 0.5s ease; }
+        .app-section.active-section { display: block; opacity: 1; animation: fadeIn 0.5s ease-in forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Order Tracking Timeline */
+        .tracking-timeline { position: relative; border-right: 2px solid #334155; padding-right: 20px; margin-right: 10px; }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-dot { position: absolute; right: -29px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #0f172a; border: 2px solid #334155; z-index: 10; }
+        .timeline-dot.completed { background: #10b981; border-color: #10b981; box-shadow: 0 0 10px #10b981; }
+        .timeline-dot.active { background: #22d3ee; border-color: #22d3ee; box-shadow: 0 0 15px #22d3ee; animation: pulseDot 1.5s infinite; }
+        @keyframes pulseDot { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
 
         #confetti-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999; display: none; }
     </style>
@@ -65,13 +80,13 @@
             <span class="font-eng text-xs font-extrabold text-amber-400 uppercase tracking-widest">🌟 GLOBAL VISION: We don't just advertise, we make your brand the market leader!</span>
             <span class="text-white text-sm font-bold">|</span>
             <span class="text-white text-sm font-bold">ہمارا ہدف صرف اشتہارات چلانا نہیں، بلکہ آپ کے برانڈ کو مارکیٹ کا لیڈر بنانا ہے!</span>
-            <span class="font-eng text-xs font-bold text-cyan-400 tracking-wider">🚀 ENTERPRISE-GRADE INFRASTRUCTURE ARCHITECTURE IS ACTIVE</span>
+            <span class="font-eng text-xs font-bold text-cyan-400 tracking-wider">🚀 SECURE CLOUD INFRASTRUCTURE ECOSYSTEM IS RUNNING</span>
         </div>
     </div>
 
-    <nav class="glass-navbar sticky top-0 z-50 px-6 py-4 shadow-xl">
+    <nav class="glass-navbar sticky top-0 z-50 px-6 py-4 shadow-2xl">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchAppTab('home-section')">
                 <div class="w-11 h-11 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center font-eng font-black text-lg text-white shadow-[0_0_15px_rgba(34,211,238,0.4)]">AR</div>
                 <div class="flex flex-col">
                     <h1 class="text-xl font-black font-eng text-white tracking-widest leading-none"><span class="text-cyan-400">AWAMI</span> <span class="text-amber-400">RAHNUMA</span></h1>
@@ -80,14 +95,23 @@
             </div>
             
             <div class="hidden md:flex items-center gap-8 font-bold text-sm">
-                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">خدمات / Services</a>
-                <a href="#" class="text-gray-300 hover:text-cyan-400 transition">پورٹ فولیو / Portfolio</a>
-                <div class="bg-cyan-500/10 text-cyan-400 px-4 py-1.5 rounded-lg border border-cyan-500/30 font-sans text-xs tracking-wide">● ACTIVE ORDER CELL</div>
+                <div class="nav-link nav-link-active text-gray-300 transition flex flex-col items-center" onclick="switchAppTab('home-section')">
+                    <span>آرڈر ڈیسک</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Order Cell</span>
+                </div>
+                <div class="nav-link text-gray-300 transition flex flex-col items-center" onclick="switchAppTab('portfolio-section')">
+                    <span>پورٹ فولیو و وژن</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Portfolio & Vision</span>
+                </div>
+                <div class="nav-link text-gray-300 transition flex flex-col items-center" onclick="switchAppTab('tracking-section')">
+                    <span>لائیو ٹریکنگ</span><span class="text-[9px] font-eng uppercase tracking-widest opacity-80 mt-0.5">Track Project</span>
+                </div>
+                <div class="bg-cyan-500/10 text-cyan-400 px-4 py-1.5 rounded-lg border border-cyan-500/30 font-eng font-bold text-xs tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.2)]">
+                    ● ECOSYSTEM ACTIVE
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-12 px-4">
+    <section id="home-section" class="app-section active-section py-12 px-4">
         <div class="container mx-auto max-w-4xl glass-card rounded-3xl p-6 md:p-12">
             
             <div class="text-center mb-12 border-b border-slate-800 pb-6 space-y-2">
@@ -100,34 +124,28 @@
 
             <form id="premiumForm" class="space-y-8" novalidate>
                 
-                <div class="space-y-2">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">پورا نام</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">Full Name (Enter minimum 3 characters)</span>
-                    </label>
+                <div>
+                    <label class="label-ur">پورا نام</label>
+                    <label class="label-en">Full Name (Enter minimum 3 characters)</label>
                     <div class="relative">
-                        <input type="text" id="fullName" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg" placeholder="e.g. Malik Umair Khokhar">
+                        <input type="text" id="fullName" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg font-eng" placeholder="e.g. Malik Umair Khokhar">
                         <svg id="nameTick" class="indicator-checkmark w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">واٹس ایپ نمبر</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">WhatsApp Number (Select Global Country Flag)</span>
-                    </label>
+                <div>
+                    <label class="label-ur">واٹس ایپ نمبر</label>
+                    <label class="label-en">WhatsApp Number (Select Global Country Flag)</label>
                     <div class="phone-input-container">
-                        <input type="tel" id="whatsappNumber" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg tracking-wider">
+                        <input type="tel" id="whatsappNumber" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg tracking-wider font-eng">
                         <svg id="phoneTick" class="indicator-checkmark w-6 h-6 left-auto right-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">مطلوبہ ڈیجیٹل سروس</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">Select Required Core Service Architecture</span>
-                    </label>
-                    <select id="serviceSelect" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-base cursor-pointer bg-slate-900">
+                <div>
+                    <label class="label-ur">مطلوبہ ڈیجیٹل سروس</label>
+                    <label class="label-en">Select Required Core Service Architecture</label>
+                    <select id="serviceSelect" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-base cursor-pointer bg-slate-900 font-eng">
                         <option value="" disabled selected>-- Choose a Service / سروس منتخب کریں --</option>
                         <option value="whatsapp">WhatsApp Business Automation (Complete AI Chatbot & Server Setup)</option>
                         <option value="video-ads">High Converting Video Ads (ہائی کنورٹنگ ویڈیو ایڈز)</option>
@@ -141,8 +159,8 @@
 
                 <div id="packagesSection" class="hidden space-y-4">
                     <label class="block">
-                        <span class="text-base font-bold text-amber-400 block">کمپنی پیکج منتخب کریں</span>
-                        <span class="text-xs font-eng text-gray-400 uppercase tracking-wider block mt-1">Select Deliverable Package Tier (Multi-Currency Support)</span>
+                        <span class="label-ur text-amber-400">کمپنی پیکج منتخب کریں</span>
+                        <span class="label-en text-gray-400">Select Deliverable Package Tier (Multi-Currency Support)</span>
                     </label>
                     <div id="packagesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         </div>
@@ -150,11 +168,9 @@
                     <input type="hidden" id="selectedPkgPrice">
                 </div>
 
-                <div class="space-y-2">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">را میٹریل / برانڈ فائلز اپلوڈ کریں</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">Upload Brand Raw Material Assets (Optional)</span>
-                    </label>
+                <div>
+                    <label class="label-ur">را میٹریل / برانڈ فائلز اپلوڈ کریں</label>
+                    <label class="label-en">Upload Brand Raw Material Assets (Optional)</label>
                     <div class="border-2 border-dashed border-slate-700 rounded-2xl p-8 text-center hover:border-cyan-400 bg-slate-900/30 cursor-pointer transition">
                         <input type="file" id="fileUpload" class="hidden">
                         <label for="fileUpload" class="cursor-pointer block space-y-2">
@@ -165,19 +181,15 @@
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">پروجیکٹ کی تفصیلات</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">Project Functional Specifications Scope</span>
-                    </label>
+                <div>
+                    <label class="label-ur">پروجیکٹ کی تفصیلات</label>
+                    <label class="label-en">Project Functional Specifications Scope</label>
                     <textarea id="projectDetails" rows="4" required class="premium-input w-full bg-slate-900/50 text-white px-5 py-4 rounded-xl text-base leading-relaxed font-sans" placeholder="Describe your specific instructions, video editing styles, hooks or scripts requirements..."></textarea>
                 </div>
 
-                <div class="space-y-3">
-                    <label class="block">
-                        <span class="text-base font-bold text-gray-200 block">ادائیگی کا طریقہ منتخب کریں</span>
-                        <span class="text-xs font-eng text-cyan-400 uppercase tracking-wider block mt-1">Select Payment Gateway Channels Matrix</span>
-                    </label>
+                <div>
+                    <label class="label-ur">ادائیگی کا طریقہ منتخب کریں</label>
+                    <label class="label-en">Select Payment Gateway Channels Matrix</label>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center" id="paymentSelectorGrid">
                         <div class="gateway-tab p-4 rounded-xl cursor-pointer flex flex-col items-center justify-center gap-1 gateway-tab-active" data-method="easypaisa">
                             <span class="text-sm text-emerald-400 font-black font-eng tracking-wider">EasyPaisa</span>
@@ -198,7 +210,7 @@
                 <div class="bg-slate-900/90 p-6 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="flex flex-col">
                         <label id="captchaLabel" class="text-xl font-black font-eng tracking-widest text-white">Security firewall Check: ? + ? =</label>
-                        <span class="text-xs text-gray-400 mt-1 block">ثابت کریں کہ آپ انسان ہیں۔ / Anti-Bot Security Verification</span>
+                        <span class="text-xs text-gray-400 mt-1 block font-eng">Anti-Bot Security Verification</span>
                     </div>
                     <input type="number" id="securityAnswer" required class="premium-input w-full sm:w-36 text-white px-4 py-4 rounded-xl text-center font-eng text-2xl font-black">
                 </div>
@@ -212,6 +224,133 @@
                     <span class="text-[10px] font-eng uppercase tracking-widest opacity-80 block mt-1">Submit Secure Order Specification</span>
                 </button>
             </form>
+        </div>
+    </section>
+
+    <section id="portfolio-section" class="app-section py-16 px-4 relative">
+        <div class="absolute top-20 left-10 w-96 h-96 bg-cyan-600/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+        <div class="container mx-auto max-w-6xl relative z-10 space-y-16">
+            
+            <div class="glass-card p-8 rounded-3xl border border-amber-500/20">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-amber-400">عوامی رہنما ایج (Why Choose Us?)</h2>
+                    <p class="text-gray-400 font-eng text-xs uppercase tracking-widest mt-2">The Global Standard Ecosystem</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-700/50 text-center space-y-3">
+                        <div class="text-4xl">🌐</div>
+                        <h4 class="font-bold text-white">انٹرنیشنل ریموٹ ورکنگ ماڈل</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed font-sans">ہم فزیکل آفس کے فالتو اخراجات کے بجائے دنیا کے بہترین ماہرین اور ٹیکنالوجی پر سرمایہ کاری کرتے ہیں، تاکہ آپ کو کم قیمت میں عالمی معیار ملے۔</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-700/50 text-center space-y-3">
+                        <div class="text-4xl">🤖</div>
+                        <h4 class="font-bold text-white">100% مکمل آٹومیشن سسٹم</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed font-sans">ہم صرف اشتہار نہیں چلاتے، بلکہ کسٹمر کے پہلے میسج سے فائنل ڈیل کلوز ہونے تک کا پورا سفر روبوٹس (AI) کے ذریعے آٹومیٹ کر دیتے ہیں۔</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-2xl border border-slate-700/50 text-center space-y-3">
+                        <div class="text-4xl">🛡️</div>
+                        <h4 class="font-bold text-white">اینٹی فراڈ سیکیورٹی گارنٹی</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed font-sans">آرڈر پلیس ہوتے ہی آپ کو ایک محفوظ Order ID دی جاتی ہے۔ ہمارا مکمل شفاف نظام کسٹمر کا ڈر ہمیشہ کے لیے ختم کر دیتا ہے۔</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="text-center mb-10 space-y-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide">ہمارے کامیاب ترین پروجیکٹس</h2>
+                    <h3 class="text-lg font-eng font-bold text-cyan-400 uppercase tracking-widest">Our Elite Global Case Studies</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 p-5 space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-eng font-bold bg-cyan-950/80 text-cyan-400 px-3 py-1 rounded-full border border-cyan-500/30">CASE STUDY: AUTOMATION</span>
+                            <h4 class="text-lg font-bold text-white pt-2 font-eng">E-Commerce AI Sales Funnel</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed font-sans pt-1">برانڈ کے لیے واٹس ایپ کلاؤڈ سرور پر روبوٹ سسٹم نصب کیا گیا۔ کسٹمر کا پورا سفر 100% انسان کے بغیر مکمل ہوتا ہے۔</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800/60 flex justify-between items-center text-xs">
+                            <span class="text-gray-400">ROI Result:</span><span class="text-emerald-400 font-extrabold font-eng text-sm">84% Automated Sales</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 p-5 space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-eng font-bold bg-purple-950/80 text-purple-400 px-3 py-1 rounded-full border border-purple-500/30">CASE STUDY: VIDEO ADS</span>
+                            <h4 class="text-lg font-bold text-white pt-2 font-eng">Real Estate High-Retention Ad</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed font-sans pt-1">3 سیکنڈ ہک (Hook) اور موشن گرافکس کے ساتھ ایک ویڈیو اشتہار جس نے مارکیٹ میں دھماکا خیز رسائی حاصل کی۔</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800/60 flex justify-between items-center text-xs">
+                            <span class="text-gray-400">ROI Result:</span><span class="text-emerald-400 font-extrabold font-eng text-sm">1200+ Qualified Leads</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 p-5 space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-eng font-bold bg-amber-950/80 text-amber-400 px-3 py-1 rounded-full border border-amber-500/30">CASE STUDY: BRANDING</span>
+                            <h4 class="text-lg font-bold text-white pt-2 font-eng">Tech Startup Rebranding Kit</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed font-sans pt-1">کمپنی کے لیے الٹرا ماڈرن 3D لوگو ڈیزائن، کارپوریٹ کلر گائیڈ لائنز اور مکمل سوشل میڈیا لانچ کٹ فریم ورک۔</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800/60 flex justify-between items-center text-xs">
+                            <span class="text-gray-400">ROI Result:</span><span class="text-emerald-400 font-extrabold font-eng text-sm">100% Unique Trademark</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tracking-section" class="app-section py-16 px-4">
+        <div class="container mx-auto max-w-3xl glass-card rounded-3xl p-6 md:p-12">
+            
+            <div class="text-center mb-10 border-b border-slate-800 pb-6 space-y-2">
+                <div class="w-16 h-16 bg-cyan-500/10 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-3xl border border-cyan-500/30 mb-4">🔍</div>
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-wide">لائیو پروجیکٹ ٹریکنگ سسٹم</h2>
+                <h3 class="text-xs font-eng font-bold text-cyan-400 uppercase tracking-widest">Track Your Project Status in Real-Time</h3>
+                <p class="text-gray-400 text-xs max-w-xl mx-auto leading-relaxed pt-2 font-eng">
+                    According to our strict Data Privacy Law, you must provide your exact Order ID and WhatsApp Name to fetch data.
+                </p>
+            </div>
+
+            <form id="trackingForm" class="space-y-6">
+                <div>
+                    <label class="label-ur">آرڈر آئی ڈی (Order ID)</label>
+                    <input type="text" id="trackOrderId" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg font-eng text-center tracking-widest uppercase" placeholder="e.g. AR-9824XYZ">
+                </div>
+                <div>
+                    <label class="label-ur">واٹس ایپ نام (Security Verification)</label>
+                    <input type="text" id="trackName" required class="premium-input w-full text-white px-5 py-4 rounded-xl text-lg font-eng text-center" placeholder="Name provided during order">
+                </div>
+                <button type="submit" id="trackSubmitBtn" class="w-full bg-gradient-to-r from-slate-700 to-slate-800 text-white font-bold py-4 rounded-xl hover:bg-cyan-600 transition-all border border-slate-600 hover:border-cyan-400 text-lg font-eng uppercase tracking-widest">
+                    Search Cloud Database
+                </button>
+            </form>
+
+            <div id="trackingResultBox" class="hidden mt-10 p-6 bg-slate-900/60 rounded-2xl border border-cyan-500/30">
+                <h4 class="text-xl font-bold text-white text-center mb-8 border-b border-slate-800 pb-4 font-eng" id="trackResultTitle">Status for: AR-9824XYZ</h4>
+                
+                <div class="tracking-timeline mr-4">
+                    <div class="timeline-item">
+                        <div class="timeline-dot completed"></div>
+                        <h5 class="font-bold text-emerald-400 text-lg">آرڈر موصول ہو گیا (Order Received)</h5>
+                        <p class="text-xs text-gray-400 mt-1 font-eng">Date: Today | System securely locked the data.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot completed"></div>
+                        <h5 class="font-bold text-emerald-400 text-lg">پیمنٹ ویریفائیڈ (Payment Verified)</h5>
+                        <p class="text-xs text-gray-400 mt-1 font-eng">Accounts department confirmed the transaction.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <h5 class="font-bold text-cyan-400 text-lg">پروجیکٹ پر کام جاری ہے (In Progress)</h5>
+                        <p class="text-xs text-gray-400 mt-1">ایلیٹ انجینئرز اور ایڈیٹرز آپ کے ماسٹر پیس پر کام کر رہے ہیں۔</p>
+                    </div>
+                    <div class="timeline-item opacity-40">
+                        <div class="timeline-dot"></div>
+                        <h5 class="font-bold text-gray-300 text-lg">کلاؤڈ ڈیلیوری (Final Delivery)</h5>
+                        <p class="text-xs text-gray-400 mt-1 font-eng">Pending completion.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -247,8 +386,8 @@
                         <label for="satisfyCheck" class="text-gray-300 cursor-pointer select-none leading-loose">میں تصدیق کرتا ہوں کہ فراہم کردہ معلومات درست ہیں۔ فائنل تصدیق کے بعد پروسیس لاک کر دیا جائے۔</label>
                     </div>
 
-                    <button id="finalConfirmBtn" disabled class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold py-4 rounded-xl opacity-30 cursor-not-allowed transition-all text-lg shadow-lg">
-                        حتمی منظوری - ڈیٹا لاک فرمائیں
+                    <button id="finalConfirmBtn" disabled class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-bold py-4 rounded-xl opacity-30 cursor-not-allowed transition-all text-lg shadow-lg font-eng uppercase tracking-widest">
+                        Verify & Lock Data
                     </button>
                 </div>
 
@@ -261,18 +400,18 @@
                     </div>
 
                     <div class="bg-amber-950/30 border border-amber-500/20 p-4 rounded-2xl text-center space-y-1">
-                        <p class="text-amber-400 font-black text-sm">⚠️ کلاؤڈ سرور سلاٹ پروٹیکشن الرٹ / Server Slot Clock</p>
+                        <p class="text-amber-400 font-black text-sm font-eng uppercase">⚠️ Server Slot Countdown</p>
                         <p class="text-xs text-gray-300 leading-relaxed">
-                            آپ کا ہائی سپیڈ کلاؤڈ سرور سلاٹ عارضی طور پر محفوظ کر دیا گیا ہے۔ آٹومیٹک آرڈر آئی ڈی (Order ID) حاصل کرنے کے لیے آپ کے پاس مندرجہ ذیل ٹائم باقی ہے:
+                            آپ کا ہائی سپیڈ کلاؤڈ سرور سلاٹ عارضی طور پر مخصوص کر دیا گیا ہے۔ فیس کی وصولی کی خودکار شناخت کے لیے آپ کے پاس مندرجہ ذیل وقت باقی ہے:
                         </p>
                         <div class="text-3xl font-mono font-black text-red-500 tracking-widest pt-1 animate-pulse" id="countdownTimer">15:00</div>
                         <p class="text-[10px] text-gray-500 pt-1 leading-normal">
-                            نوٹ: پندرہ منٹ میں فیس ٹرانسفر نہ ہونے کی صورت میں سسٹم آرڈر منسوخ کر دے گا اور اگلی بار آپ کا ٹرسٹ سکور کم ہونے کی وجہ سے سرور سلاٹ الاٹ نہیں ہو سکے گی۔
+                            نوٹ: ہمارا خودکار آن لائن نظام 15 منٹ کے اندر پیمنٹ ڈیٹیکٹ (Detect) کرتا ہے۔ ٹائم ختم ہونے کی صورت میں پروجیکٹ بلاک کر دیا جائے گا اور اگلی بار سرور سیکیورٹی کے تحت آپ کا نام کالی لسٹ (Blocklist) میں شامل ہو سکتا ہے۔
                         </p>
                     </div>
 
                     <p class="text-gray-400 text-xs max-w-sm mx-auto leading-relaxed">
-                        براہ کرم اپنے منتخب کردہ پیمنٹ طریقہ پر فیس منتقل فرما کر <b>پیمنٹ اسکرین شاٹ</b> ہمارے واٹس ایپ نمبر یا لائیو سپورٹ ایجنٹ کو فوری شیئر کریں۔
+                        براہ کرم مندرجہ ذیل اکاؤنٹ پر فیس منتقل فرما کر <b>پیمنٹ اسکرین شاٹ</b> فوری طور پر ہمارے آفیشل واٹس ایپ یا لائیو چیٹ ایجنٹ کو شیئر کریں تاکہ آپ کی Order ID لائیو ہو سکے:
                     </p>
 
                     <div id="financialAccountGatewayDisplayBox" class="text-right font-eng p-5 rounded-2xl border border-slate-800 bg-slate-900 shadow-inner">
@@ -285,7 +424,50 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        // Mapped Document Data Framework Configurations
+        // --- SPA TAB SWITCHING ENGINE ---
+        function switchAppTab(tabId) {
+            // Hide all sections
+            document.querySelectorAll('.app-section').forEach(sec => {
+                sec.classList.remove('active-section');
+                setTimeout(() => sec.style.display = 'none', 300); // Wait for fade out
+            });
+            // Show target section
+            setTimeout(() => {
+                const target = document.getElementById(tabId);
+                target.style.display = 'block';
+                // Trigger reflow to restart animation
+                void target.offsetWidth; 
+                target.classList.add('active-section');
+            }, 300);
+            
+            // Update Nav visual
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('nav-link-active'));
+            // simple match hack for inline onclicks
+            event.currentTarget.classList.add('nav-link-active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // --- TRACKING DESK LOGIC ---
+        document.getElementById('trackingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('trackSubmitBtn');
+            const resultBox = document.getElementById('trackingResultBox');
+            const title = document.getElementById('trackResultTitle');
+            const idVal = document.getElementById('trackOrderId').value.trim();
+            
+            btn.innerHTML = 'Connecting to Cloud Database...';
+            btn.classList.add('opacity-50', 'cursor-not-allowed', 'border-cyan-400');
+            resultBox.classList.add('hidden');
+
+            setTimeout(() => {
+                btn.innerHTML = 'Search Cloud Database';
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                title.innerText = `Lived Status for: ${idVal}`;
+                resultBox.classList.remove('hidden');
+            }, 2500);
+        });
+
+        // --- CORE DATA MATRICES (Packages & Payment) ---
         const pkPackages = {
             "whatsapp": [
                 { name: "اسٹارٹ اپ آٹومیشن (Startup)", price: "30,000 PKR", desc: "بنیادی مینیو اور 10 آٹو ریپلائیز، فیس بک کلاؤڈ API سیٹ اپ۔" },
@@ -327,51 +509,51 @@
 
         const intlPackages = {
             "whatsapp": [
-                { name: "Startup Automation Tier", price: "115 USD", desc: "Core conversational flow mapping with 10 automated response matrices, Meta API Setup." },
-                { name: "Business Pro Automation Tier", price: "245 USD", desc: "Multilevel tree configurations, 30 routing blocks, Hybrid Mode (AI Engine + Live Agent Routing)." },
-                { name: "Advanced E-Commerce System", price: "380 USD", desc: "Real-time Google Sheets tracking matrix, secure data integration, transaction logging systems." },
-                { name: "Enterprise Custom Cluster", price: "570 USD", desc: "Infinite custom logic routines. Includes 1-Year Dedicated Cloud VPS Server allocation fees." }
+                { name: "Startup Automation Tier", price: "115 USD", desc: "Core conversational response mapping with 10 automated response blocks, cloud routing config." },
+                { name: "Business Pro Automation Tier", price: "245 USD", desc: "Multilevel logic tree configurations, Hybrid Router Engine (AI Chatbot + Live Agent Routing)." },
+                { name: "Advanced E-Commerce Integration", price: "380 USD", desc: "Real-time sync matrix layer for Google Sheets tracking database logging pipelines." },
+                { name: "Enterprise Custom Matrix VPS", price: "570 USD", desc: "Infinite structural custom business flows. Includes 1-Year Dedicated Cloud VPS node management." }
             ],
             "video-ads": [
-                { name: "Basic Short Advertisement", price: "15 USD", desc: "1 Conversion-focused Video Ad Asset (Up to 30s) built with psychological hook scripting copy." },
-                { name: "Standard Business Presentation", price: "25 USD", desc: "1 High retention sales ad (Up to 60s), custom typography, motion sound design effects." },
-                { name: "Premium Enterprise Commercial", price: "45 USD", desc: "1 Full Premium Narrative Commercial Asset (2-3 mins), 3D effects rendering layers, visual optimization." }
+                { name: "Basic Short Video Ad", price: "15 USD", desc: "1 Conversion ad asset (Up to 30s) built on high retention algorithmic visual hooks scripting." },
+                { name: "Standard Business Ad Presentation", price: "25 USD", desc: "1 Sales asset (Up to 60s), modern corporate motion graphics framework formatting integration." },
+                { name: "Premium Enterprise Commercial", price: "45 USD", desc: "1 Full High-End Narrative Commercial (2-3 mins), 3D text layers, lookup table balancing formatting." }
             ],
             "video-editing": [
-                { name: "Short Form Engagement Bundle", price: "15 USD", desc: "2 High retention social media reels with advanced timed captions syncing and custom design cuts." },
-                { name: "Standard YouTube Production", price: "20 USD", desc: "1 Complete Long Video asset (5-8 mins), pacing corrections, lookup table color grading styles." },
-                { name: "Premium Master Cinematic Combo", price: "40 USD", desc: "3 Vertical Reels + 1 Long Form Master Asset, premium audio soundscape processing formatting." }
+                { name: "Short Form Engagement Reels", price: "15 USD", desc: "2 High retention dynamic vertical assets with micro timing captions layout tracking styles." },
+                { name: "Standard YouTube Production", price: "20 USD", desc: "1 Long Video file asset (5-8 mins), cam cutting edits, deep audio lookup grading balance." },
+                { name: "Premium Cinematic Master Combo", price: "40 USD", desc: "3 Engagement Vertical Assets + 1 Long Form Master Asset, premium multi track sound FX mastering." }
             ],
             "smm": [
-                { name: "Basic Infrastructure Growth", price: "25 USD", desc: "1 Lead campaign configuration and 15 days active targeting audit metric management fee." },
-                { name: "Pro Conversion Campaign", price: "40 USD", desc: "2 Isolated performance setups, pixel event tracking layout, and 30 days active management fee." },
-                { name: "Advanced Behavioral Retargeting", price: "65 USD", desc: "3 Strategic arrays, custom lookalike mining models, daily conversion analytics management fee." },
-                { name: "Global Brand Domination Framework", price: "100 USD", desc: "Omnichannel brand distribution architecture, funnel optimization metrics and tracking (1 Month)." }
+                { name: "Basic Growth Campaign Allocation", price: "25 USD", desc: "1 Target conversion ad cluster and 15 days active monitoring campaign management fee." },
+                { name: "Pro Conversion Scale Setup", price: "40 USD", desc: "2 Isolated audience ad matrices, meta tracking data pixel integrations, and 30 days management." },
+                { name: "Advanced Behavioral Target Mining", price: "65 USD", desc: "3 Active strategic ad nodes, custom scaling patterns analysis, 1 month optimization monitoring." },
+                { name: "Global Omni Domination Matrix", price: "100 USD", desc: "Complete omnichannel digital sales funnel deployment and active lead harvesting data pipeline." }
             ],
             "web-dev": [
-                { name: "High Conversion Landing Page", price: "45 USD", desc: "1 Page lightning fast structural web build optimized for scaling conversion metrics." },
-                { name: "Premium Omnichannel Retail Store", price: "115+ USD", desc: "Complete integrated e-commerce infrastructure with secure checkouts and trigger sequences." }
+                { name: "High Performance Landing Page", price: "45 USD", desc: "1 Page ultra fast custom server page optimized for explicit business traffic acquisition." },
+                { name: "Premium Omnichannel Retail Store", price: "115+ USD", desc: "Complete automated store development with card checkouts and automated whatsapp integration loops." }
             ],
             "graphic": [
-                { name: "Premium Corporate Logo Concept", price: "5 USD", desc: "1 High fidelity custom corporate vector identity package with full source files allocation." },
-                { name: "Social Media Identity Header / Post", price: "5 USD", desc: "1 Advanced visual marketing layout optimized for direct paid search and ad distribution channels." },
-                { name: "Brand Launch Startup Blueprint Kit", price: "12 USD", desc: "1 Brand Logo Vector + 1 Social Header layout + 3 Premium marketing post design blueprints." }
+                { name: "Premium Corporate Vector Logo", price: "5 USD", desc: "1 High fidelity brand identity identifier vector build with full source components handoff." },
+                { name: "Social Media Identity Banner / Post", price: "5 USD", desc: "1 Advanced performance ad post optimized for absolute visibility conversion indexes." },
+                { name: "Brand Launch Startup Blueprint Kit", price: "12 USD", desc: "1 Brand Logo Identity + 1 Network layout header + 3 Premium engagement layout designs." }
             ],
             "voice": [
-                { name: "Short Voice Acquisition Asset", price: "4 USD", desc: "Up to 30s high impact commercial narration (Optimized for short form algorithm pacing layouts)." },
-                { name: "Standard Product Commercial Narration", price: "5 USD", desc: "Up to 60s باوقار and energetic brand voice narration optimized for corporate visibility." },
-                { name: "Long Form Documentary Narration", price: "10 USD", desc: "Up to 5 mins smooth pacing vocal narration for educational or detailed document summaries." }
+                { name: "Short Voice Acquisition Asset", price: "4 USD", desc: "Up to 30s commercial performance narration asset (Perfect for social reels or tiktok video ads)." },
+                { name: "Standard Corporate Ad Narration", price: "5 USD", desc: "Up to 60s energetic vocal performance mapping designed for high retention business ads." },
+                { name: "Long Form Narrative Audio Recording", price: "10 USD", desc: "Up to 5 mins smooth pacing elite voice asset perfect for premium educational document courses." }
             ]
         };
 
         const financialGatewaysDetails = {
-            "easypaisa": `<span class="text-xs text-emerald-400 font-bold block mb-1">🟢 EasyPaisa Mobile Wallet Account</span><p class="text-white font-bold text-sm">Account Title: Tazeem Akhtar</p><p class="text-cyan-400 font-mono text-base mt-1 font-black">0349-7892713</p>`,
-            "jazzcash": `<span class="text-xs text-orange-400 font-bold block mb-1">🟠 JazzCash Official Merchant Till ID</span><p class="text-white font-bold text-sm">Merchant Name: Umair Customer Services</p><p class="text-cyan-400 font-mono text-base mt-1 font-black">981143326</p>`,
-            "stripe": `<span class="text-xs text-indigo-400 font-bold block mb-1">🔵 International Credit / Debit Card (Stripe Secure Link)</span><p class="text-white text-xs leading-relaxed mt-1">آرڈر ڈیٹا بیس لاک ہوتے ہی ہماری ایلیٹ ٹیم آپ کے واٹس ایپ نمبر پر ایک محفوظ <b>Stripe Checkout Invoice URL</b> بھیجے گی جس سے آپ کینیڈا، یوکے یا یو اے ای کے کسی بھی کارڈ سے فیس جمع کر سکیں گے۔</p>`,
-            "payoneer": `<span class="text-xs text-cyan-400 font-bold block mb-1">🌐 Global Wire Transfer (Wise / Payoneer Network Account)</span><p class="text-white font-bold text-xs mt-1">Bank: United Bank Limited (UBL Pakistan)<br>Title: Umair Zulfiqar<br>IBAN: PK41UBIL0000000980242367194</p>`
+            "easypaisa": `<div class="flex items-center gap-3 mb-2 justify-end"><img src="https://easypaisa.com.pk/wp-content/uploads/2023/10/Easypaisa-Logo-New.png" class="h-6 rounded bg-white p-1" alt="EasyPaisa"><span class="text-xs text-emerald-400 font-bold">Mobile Wallet Account</span></div><p class="text-white font-bold text-sm">Account Title: Tazeem Akhtar</p><p class="text-cyan-400 font-mono text-xl mt-1 font-black">0349-7892713</p>`,
+            "jazzcash": `<div class="flex items-center gap-3 mb-2 justify-end"><img src="https://www.jazzcash.com.pk/assets/uploads/2016/05/jazzcash-logo-200x200.png" class="h-6 rounded bg-white p-1" alt="JazzCash"><span class="text-xs text-orange-400 font-bold">Official Merchant Till ID</span></div><p class="text-white font-bold text-sm">Merchant Name: Umair Customer Services</p><p class="text-cyan-400 font-mono text-xl mt-1 font-black">981143326</p>`,
+            "stripe": `<div class="flex items-center gap-3 mb-2 justify-end"><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" class="h-6 rounded bg-white p-1" alt="Stripe"><span class="text-xs text-indigo-400 font-bold">International Credit / Debit Card</span></div><p class="text-white text-xs leading-relaxed mt-1">ہماری ٹیم آپ کے واٹس ایپ نمبر پر ایک محفوظ <b>Stripe Checkout URL Link</b> بھیجے گی جس سے آپ کینیڈا، یوکے یا یو اے ای کے کسی بھی ویزا/ماسٹر کارڈ سے براہ راست فیس جمع کر سکیں گے۔</p>`,
+            "payoneer": `<div class="flex items-center gap-3 mb-2 justify-end"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Payoneer_logo_2021.svg" class="h-6 rounded bg-white p-1" alt="Payoneer"><span class="text-xs text-cyan-400 font-bold">Global Wire Transfer (Wise / Payoneer)</span></div><p class="text-white font-bold text-xs mt-1">Bank: United Bank Limited (UBL Pakistan)<br>Title: Umair Zulfiqar<br>IBAN Code: PK41UBIL0000000980242367194</p>`
         };
 
-        // Captcha Math Generator
+        // --- CAPTCHA ---
         let d1, d2, finalAnswer;
         function loadCaptchaQuery() {
             d1 = Math.floor(Math.random() * 7) + 3;
@@ -382,7 +564,7 @@
         }
         loadCaptchaQuery();
 
-        // Phone input infrastructure initialization
+        // --- PHONE INPUT ---
         const pInput = document.getElementById("whatsappNumber");
         const telInstance = window.intlTelInput(pInput, {
             preferredCountries: ["pk", "ae", "gb", "us", "ca"],
@@ -397,7 +579,7 @@
         const pTick = document.getElementById('phoneTick');
         const captchaInput = document.getElementById('securityAnswer');
 
-        // Dynamic pricing architecture calculation model
+        // --- DYNAMIC PACKAGE RENDERING ---
         function executePackageLayout() {
             const val = sSelect.value;
             if(!val) return;
@@ -417,7 +599,7 @@
                         <div class="flex justify-between items-start gap-4">
                             <div class="flex items-center gap-3">
                                 <span class="ui-radio-circle"></span>
-                                <span class="text-white font-bold text-sm block leading-tight">${pkg.name}</span>
+                                <span class="text-white font-bold text-sm block leading-tight font-eng">${pkg.name}</span>
                             </div>
                             <span class="text-cyan-400 font-eng font-black text-xs bg-cyan-950/40 px-3 py-1 rounded-md border border-cyan-500/20 whitespace-nowrap">${pkg.price}</span>
                         </div>
@@ -439,7 +621,7 @@
         sSelect.addEventListener('change', executePackageLayout);
         pInput.addEventListener('countrychange', executePackageLayout);
 
-        // Real-time Visual Input Validation Tracking Engine
+        // --- REALTIME VALIDATION ---
         fName.addEventListener('input', () => {
             if(fName.value.trim().length >= 3) { fName.classList.add('input-valid'); fName.classList.remove('input-error'); nTick.classList.add('active-checkmark'); }
             else { fName.classList.remove('input-valid'); nTick.classList.remove('active-checkmark'); }
@@ -455,7 +637,7 @@
             else { captchaInput.classList.remove('input-valid'); }
         });
 
-        // Payment Gateway Grid Selection Logic
+        // --- PAYMENT TABS ---
         document.querySelectorAll('#paymentSelectorGrid > .gateway-tab').forEach(tab => {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('#paymentSelectorGrid > .gateway-tab').forEach(t => t.classList.remove('gateway-tab-active'));
@@ -464,7 +646,7 @@
             });
         });
 
-        // Countdown Timer Engine Closure
+        // --- SCARCITY TIMER ---
         let clockThread;
         function runCheckoutTimer() {
             let limit = 15 * 60;
@@ -484,7 +666,7 @@
             }, 1000);
         }
 
-        // Form Submission System Orchestration
+        // --- FORM SUBMIT LOGIC ---
         const form = document.getElementById('premiumForm');
         const reviewModal = document.getElementById('reviewModal');
         const satisfyCheck = document.getElementById('satisfyCheck');
@@ -509,7 +691,7 @@
 
             if(!gatePass) return;
 
-            // Map data items smoothly onto step 1 layout summary box
+            // Map data to Step 1 Review
             document.getElementById('revName').innerText = fName.value.trim();
             document.getElementById('revPhone').innerText = telInstance.getNumber();
             document.getElementById('revService').innerText = sSelect.options[sSelect.selectedIndex].text;
@@ -530,7 +712,7 @@
             }
         });
 
-        // Canvas Native Confetti FX Implementation
+        // --- NATIVE CONFETTI FX ---
         function igniteVisualCelebration() {
             const canvas = document.getElementById('confetti-canvas');
             const ctx = canvas.getContext('2d');
@@ -538,13 +720,13 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             let dots = [];
-            for (let i = 0; i < 140; i++) {
+            for (let i = 0; i < 160; i++) {
                 dots.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height - canvas.height,
                     r: Math.random() * 5 + 5,
                     d: Math.random() * canvas.height,
-                    color: `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.85)`,
+                    color: `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, 0.9)`,
                     tilt: Math.random() * 10 - 5,
                     tiltAngleIncremental: Math.random() * 0.06 + 0.02,
                     tiltAngle: 0
@@ -570,34 +752,31 @@
             paint();
         }
 
-        // Final Confirm Step Morphing Engine Execution
+        // --- FINAL LOCK ACTION ---
         finalConfirmBtn.addEventListener('click', function() {
-            finalConfirmBtn.innerHTML = 'کلاؤڈ محفوظ کنکشن قائم ہو رہا ہے...';
+            finalConfirmBtn.innerHTML = 'Establishing Secure Cloud Connection...';
             finalConfirmBtn.style.pointerEvents = 'none';
 
             setTimeout(() => {
-                // Personalize Greeting & Render Selective Banking Matrix Details on Step 2
                 const clientRealName = fName.value.trim();
-                document.getElementById('personalizedGreeting').innerHTML = `Congratulations <span class="text-amber-400 font-black">${clientRealName}</span>! Your Slot is Reserved.`;
+                document.getElementById('personalizedGreeting').innerHTML = `Congratulations <span class="text-amber-400 font-black">${clientRealName}</span>! Your Server Slot is Reserved.`;
                 
                 const chosenMethod = document.getElementById('selectedPaymentMethod').value;
                 document.getElementById('financialAccountGatewayDisplayBox').innerHTML = financialGatewaysDetails[chosenMethod];
 
-                // Seamless step transition visibility
                 document.getElementById('modalStepReview').style.display = 'none';
                 document.getElementById('modalStepSuccess').style.display = 'block';
                 
                 igniteVisualCelebration();
                 runCheckoutTimer();
 
-                // Lock Form State Button Style Update
                 const masterBtn = document.getElementById('mainSubmitBtn');
-                masterBtn.className = "w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-extrabold py-5 rounded-xl text-xl flex flex-col justify-center items-center pointer-events-none";
-                masterBtn.innerHTML = '✓ پروجیکٹ کامیابی سے محفوظ ہو گیا / Order Locked';
+                masterBtn.className = "w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-extrabold py-5 rounded-xl text-xl flex flex-col justify-center items-center pointer-events-none font-eng tracking-widest uppercase";
+                masterBtn.innerHTML = '✓ Order Locked Securely';
             }, 2000);
         });
 
-        // Close Popups Overlay UI Restructuring
+        // --- CLOSE POPUP ---
         document.getElementById('closeModalBtn').addEventListener('click', () => {
             reviewModal.style.display = 'none';
             document.getElementById('modalStepReview').style.display = 'block';
@@ -605,7 +784,7 @@
             satisfyCheck.checked = false;
             finalConfirmBtn.setAttribute('disabled', 'true');
             finalConfirmBtn.classList.add('opacity-30', 'cursor-not-allowed');
-            finalConfirmBtn.innerHTML = 'حتمی تصدیق - ڈیٹا لاک فرمائیں';
+            finalConfirmBtn.innerHTML = 'Verify & Lock Data';
             finalConfirmBtn.style.pointerEvents = 'auto';
             clearInterval(clockThread);
             loadCaptchaQuery();
