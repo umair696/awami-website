@@ -1,434 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awami Rahnuma Digital Solutions Agency</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --primary-blue: #1A56FF;
-            --dark-navy: #0A1A6E;
-            --sky-blue: #00C3FF;
-            --premium-gold: #F5A623;
-            --jet-black: #050A14;
-            --pure-white: #FFFFFF;
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.08);
-        }
+<title>Awami Rahnuma Digital Solutions Agency</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--jet-black);
-            color: var(--pure-white);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
+<style>
 
-        /* Language Classes */
-        .ur-text {
-            font-family: 'Noto Nastaliq Urdu', serif;
-            direction: rtl;
-            display: none; /* Default English */
-            line-height: 2.2;
-        }
+:root{
+--blue:#1A56FF;
+--sky:#00C3FF;
+--gold:#F5A623;
+--dark:#050A14;
+--glass:rgba(255,255,255,.05);
+}
 
-        body.lang-ur .ur-text { display: block; }
-        body.lang-ur .en-text { display: none; }
-        body.lang-ur { direction: rtl; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
 
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 10, 20, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-        }
+body{
+background:#050A14;
+color:white;
+overflow-x:hidden;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--primary-blue), var(--premium-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
+/* NAVBAR */
 
-        .lang-toggle {
-            background: transparent;
-            color: var(--pure-white);
-            border: 1px solid var(--glass-border);
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+backdrop-filter:blur(15px);
+background:rgba(5,10,20,.4);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
 
-        .lang-toggle:hover {
-            border-color: var(--premium-gold);
-            color: var(--premium-gold);
-        }
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
 
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 0 20px;
-        }
+.logo img{
+width:55px;
+}
 
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            z-index: -1;
-        }
+.logo h2{
+font-size:20px;
+background:linear-gradient(90deg,#00C3FF,#F5A623);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--sky-blue), var(--premium-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease;
-        }
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
 
-        h1.ur-text { font-size: 3rem; }
+nav a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
 
-        .sub-headline {
-            font-size: 1.5rem;
-            color: #A0AAB2;
-            margin-bottom: 40px;
-            animation: fadeInUp 1.2s ease;
-        }
+nav a:hover{
+color:var(--gold);
+}
 
-        .cta-container {
-            display: flex;
-            gap: 20px;
-            animation: fadeInUp 1.4s ease;
-            z-index: 10;
-        }
+/* HERO */
 
-        .btn-primary {
-            background: var(--jet-black);
-            color: var(--premium-gold);
-            border: 2px solid var(--premium-gold);
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
 
-        .btn-primary:hover {
-            background: linear-gradient(90deg, var(--premium-gold), #e09612);
-            color: var(--jet-black);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
-        }
+.hero::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#1A56FF40,transparent);
+filter:blur(90px);
+animation:pulse 6s infinite;
+}
 
-        /* Trust Bar */
-        .trust-bar {
-            display: flex;
-            justify-content: space-around;
-            background: var(--glass-bg);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            padding: 30px 5%;
-            margin-top: -50px;
-            position: relative;
-            z-index: 5;
-        }
+.hero-content{
+position:relative;
+z-index:2;
+max-width:1100px;
+padding:20px;
+}
 
-        .stat-item { text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--sky-blue); }
-        .stat-label { font-size: 1rem; color: #ccc; }
+.hero-logo{
+width:300px;
+max-width:90%;
+animation:float 5s ease-in-out infinite;
+filter:drop-shadow(0 0 30px #00C3FF);
+}
 
-        /* Services Grid */
-        #services {
-            padding: 100px 5%;
-        }
+.hero h1{
+font-size:4.5rem;
+margin-top:30px;
+line-height:1.1;
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--pure-white);
-        }
+background:linear-gradient(
+90deg,
+#00C3FF,
+#1A56FF,
+#F5A623
+);
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-        .service-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 40px 30px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
+.hero p{
+margin-top:20px;
+font-size:1.3rem;
+color:#cfcfcf;
+}
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--primary-blue);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-            transform-origin: left;
-        }
+.buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
 
-        .service-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary-blue);
-            box-shadow: 0 10px 30px rgba(26, 86, 255, 0.1);
-        }
+.btn{
+padding:16px 35px;
+border-radius:50px;
+font-weight:700;
+text-decoration:none;
+transition:.4s;
+}
 
-        .service-card:hover::before { transform: scaleX(1); }
+.primary{
+background:linear-gradient(90deg,#F5A623,#ffd978);
+color:black;
+}
 
-        .service-icon {
-            font-size: 3rem;
-            color: var(--sky-blue);
-            margin-bottom: 20px;
-        }
+.primary:hover{
+transform:translateY(-5px);
+box-shadow:0 0 35px #F5A623;
+}
 
-        /* Order Tracking Section (Signature Feature) */
-        #tracking {
-            padding: 100px 5%;
-            background: radial-gradient(circle at center, var(--dark-navy) 0%, var(--jet-black) 70%);
-        }
+.secondary{
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.04);
+color:white;
+backdrop-filter:blur(15px);
+}
 
-        .tracking-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 0 40px rgba(10, 26, 110, 0.5);
-        }
+.secondary:hover{
+border-color:#00C3FF;
+box-shadow:0 0 25px #00C3FF;
+}
 
-        .tracking-input-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+/* SERVICES */
 
-        .tracking-input-group input {
-            flex: 1;
-            padding: 15px 20px;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid var(--glass-border);
-            color: white;
-            border-radius: 10px;
-            font-size: 1rem;
-        }
+.section{
+padding:120px 8%;
+}
 
-        .track-btn {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.section-title{
+font-size:3rem;
+text-align:center;
+margin-bottom:70px;
+}
 
-        .track-btn:hover { background: var(--sky-blue); }
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:25px;
+transition:.4s;
+backdrop-filter:blur(15px);
+}
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .cta-container { flex-direction: column; }
-            .tracking-input-group { flex-direction: column; }
-            .trust-bar { flex-wrap: wrap; gap: 20px; }
-            .stat-item { width: 45%; }
-        }
-    </style>
+.card:hover{
+transform:translateY(-12px);
+border-color:#00C3FF;
+box-shadow:0 0 30px rgba(0,195,255,.4);
+}
+
+.card h3{
+font-size:1.4rem;
+margin-bottom:15px;
+}
+
+.card p{
+color:#cfcfcf;
+line-height:1.7;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.stat{
+text-align:center;
+padding:35px;
+background:rgba(255,255,255,.04);
+border-radius:20px;
+}
+
+.stat h2{
+font-size:3rem;
+color:#F5A623;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:130px 20px;
+}
+
+.cta h2{
+font-size:3rem;
+margin-bottom:25px;
+}
+
+.cta p{
+max-width:700px;
+margin:auto;
+line-height:1.8;
+color:#d5d5d5;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+right:25px;
+bottom:25px;
+width:70px;
+height:70px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+text-decoration:none;
+color:white;
+box-shadow:0 0 25px #25D366;
+animation:pulse 2s infinite;
+z-index:999;
+}
+
+/* ANIMATIONS */
+
+@keyframes pulse{
+50%{
+transform:scale(1.05);
+}
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2.6rem;
+}
+
+.hero-logo{
+width:220px;
+}
+
+nav ul{
+display:none;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <a href="#" class="logo">AR.</a>
-        <button class="lang-toggle" onclick="toggleLanguage()">
-            <i class="fas fa-globe"></i> <span id="lang-text">اردو | EN</span>
-        </button>
-    </nav>
+<nav>
 
-    <section id="hero">
-        <div id="particles-js"></div>
-        
-        <h1 class="en-text">Your Business. Our Mission.<br>Start the Digital Revolution.</h1>
-        <h1 class="ur-text">آپ کا بزنس، ہمارا مشن<br>ڈیجیٹل انقلاب شروع کریں</h1>
-        
-        <p class="sub-headline en-text">Pakistan's Premier All-in-One Digital Solutions Agency</p>
-        <p class="sub-headline ur-text">پاکستان کی پریمیم آل-ان-ون ڈیجیٹل سولیوشنز ایجنسی</p>
-        
-        <div class="cta-container">
-            <a href="#services" class="btn-primary en-text">Get Started Now</a>
-            <a href="#services" class="btn-primary ur-text">ابھی شروع کریں</a>
-        </div>
-    </section>
+<div class="logo">
+<img src="logo.png">
+<h2>AWAMI RAHNUMA</h2>
+</div>
 
-    <div class="trust-bar">
-        <div class="stat-item">
-            <div class="stat-number">500+</div>
-            <div class="stat-label en-text">Projects Completed</div>
-            <div class="stat-label ur-text">مکمل پروجیکٹس</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">95%</div>
-            <div class="stat-label en-text">Client Retention</div>
-            <div class="stat-label ur-text">کلائنٹ ریٹنشن</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label en-text">Support Available</div>
-            <div class="stat-label ur-text">سپورٹ دستیاب</div>
-        </div>
-    </div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Pricing</a></li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 
-    <section id="services">
-        <h2 class="section-title en-text">The Galaxy of Services</h2>
-        <h2 class="section-title ur-text">ہماری پریمیم ڈیجیٹل خدمات</h2>
-        
-        <div class="services-grid">
-            <div class="service-card" style="--primary-blue: #25D366;">
-                <i class="fab fa-whatsapp service-icon" style="color: #25D366;"></i>
-                <h3 class="en-text">WhatsApp Automation ⚡</h3>
-                <h3 class="ur-text">واٹس ایپ بزنس آٹومیشن ⚡</h3>
-                <br>
-                <p class="en-text">Eliminate 90% of your sales team's workload — Automate 24/7.</p>
-                <p class="ur-text">اپنی سیلز ٹیم کا 90% بوجھ ختم کریں — 24/7 آٹومیٹک۔</p>
-            </div>
-            <div class="service-card" style="--primary-blue: #FF6B6B;">
-                <i class="fas fa-video service-icon" style="color: #FF6B6B;"></i>
-                <h3 class="en-text">High-Converting Video Ads</h3>
-                <h3 class="ur-text">ہائی کنورٹنگ ویڈیو ایڈز</h3>
-                <br>
-                <p class="en-text">Hook your customer in the first 3 seconds with psychological editing.</p>
-                <p class="ur-text">پہلے 3 سیکنڈز میں کسٹمر کو پکڑیں اور سیلز میں اضافہ کریں۔</p>
-            </div>
-            <div class="service-card" style="--primary-blue: #00C3FF;">
-                <i class="fas fa-laptop-code service-icon"></i>
-                <h3 class="en-text">Web & App Development</h3>
-                <h3 class="ur-text">ویب سائٹ ڈویلپمنٹ</h3>
-                <br>
-                <p class="en-text">Be online or be invisible. Lightning fast eCommerce solutions.</p>
-                <p class="ur-text">آن لائن موجودگی یا مارکیٹ سے باہر۔ تیز ترین ای کامرس ویب سائٹس۔</p>
-            </div>
-        </div>
-    </section>
+</nav>
 
-    <section id="tracking">
-        <h2 class="section-title en-text">Live Order Tracking Portal</h2>
-        <h2 class="section-title ur-text">لائیو آرڈر ٹریکنگ پورٹل</h2>
-        
-        <div class="tracking-container">
-            <p style="text-align: center; margin-bottom: 30px; color: #ccc;">
-                <i class="fas fa-shield-alt" style="color: var(--premium-gold);"></i>
-                <span class="en-text"> 100% Secure. Track your progress live with your Order ID.</span>
-                <span class="ur-text"> 100% محفوظ۔ اپنی آرڈر آئی ڈی کے ذریعے لائیو پروگریس چیک کریں۔</span>
-            </p>
-            
-            <div class="tracking-input-group">
-                <input type="text" placeholder="Enter Order ID / آرڈر آئی ڈی درج کریں">
-                <input type="text" placeholder="WhatsApp Name / واٹس ایپ نام">
-                <button class="track-btn">Track Order</button>
-            </div>
-        </div>
-    </section>
+<section class="hero">
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Dual Language Toggle Logic
-        let isUrdu = false;
-        function toggleLanguage() {
-            isUrdu = !isUrdu;
-            if (isUrdu) {
-                document.body.classList.add('lang-ur');
-                document.getElementById('lang-text').innerText = 'EN | اردو';
-            } else {
-                document.body.classList.remove('lang-ur');
-                document.getElementById('lang-text').innerText = 'اردو | EN';
-            }
-        }
+<div class="hero-content">
 
-        // Particle.js Configuration (Cinematic Tech Feel)
-        particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#1A56FF", "#F5A623"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": false },
-                "size": { "value": 3, "random": true },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#1A56FF",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
-                    "push": { "particles_nb": 4 }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
+<img src="logo.png" class="hero-logo">
+
+<h1>
+Your Business.
+Our Mission.
+</h1>
+
+<p>
+Pakistan's Premium Digital Solutions Agency
+</p>
+
+<div class="buttons">
+
+<a href="#" class="btn primary">
+Get Started
+</a>
+
+<a href="#" class="btn secondary">
+Explore Services
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Our Premium Services
+</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>⚡ WhatsApp Automation</h3>
+<p>24/7 automated sales and customer support systems powered by AI.</p>
+</div>
+
+<div class="card">
+<h3>🎬 Video Ads</h3>
+<p>High-converting video advertisements designed to capture attention instantly.</p>
+</div>
+
+<div class="card">
+<h3>📈 Social Media Marketing</h3>
+<p>Performance-driven campaigns focused on leads and revenue growth.</p>
+</div>
+
+<div class="card">
+<h3>🎙 Voice Over</h3>
+<p>Professional voice artists for commercials, documentaries and courses.</p>
+</div>
+
+<div class="card">
+<h3>💻 Web Development</h3>
+<p>Modern fast-loading websites and business applications.</p>
+</div>
+
+<div class="card">
+<h3>🎨 Branding & Design</h3>
+<p>Premium logos, graphics and brand identity systems.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Why Choose Us
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h2>500+</h2>
+<p>Projects Completed</p>
+</div>
+
+<div class="stat">
+<h2>95%</h2>
+<p>Client Retention</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Support Available</p>
+</div>
+
+<div class="stat">
+<h2>100%</h2>
+<p>Satisfaction Focus</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>
+10X Your Business With Awami Rahnuma
+</h2>
+
+<p>
+Automation, Marketing, Branding, Voice Over, Development and Media Solutions under one roof.
+</p>
+
+<br><br>
+
+<a href="#" class="btn primary">
+Start Your Project
+</a>
+
+</section>
+
+<a class="whatsapp"
+href="https://wa.me/923001206203">
+💬
+</a>
+
 </body>
 </html>
