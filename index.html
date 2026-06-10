@@ -465,6 +465,205 @@ Start Your Project
 href="https://wa.me/923001206203">
 💬
 </a>
+<!-- ========================= -->
+<!-- PREMIUM ANIMATION ENGINE -->
+<!-- Paste Above </body> -->
+<!-- ========================= -->
 
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+/* COUNTER ANIMATION */
+
+const counters=document.querySelectorAll(".stat h2");
+
+const counterObserver=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+const counter=entry.target;
+
+const target=counter.innerText.replace(/\D/g,'');
+
+let count=0;
+
+const speed=target/80;
+
+const update=()=>{
+
+count+=speed;
+
+if(count<target){
+
+counter.innerText=Math.floor(count)+
+(counter.innerText.includes('%') ? '%' :
+counter.innerText.includes('+') ? '+' : '');
+
+requestAnimationFrame(update);
+
+}else{
+
+counter.innerText=entry.target.dataset.original;
+
+}
+
+}
+
+update();
+
+counterObserver.unobserve(counter);
+
+}
+
+});
+
+},{threshold:0.5});
+
+counters.forEach(counter=>{
+
+counter.dataset.original=counter.innerText;
+
+counterObserver.observe(counter);
+
+});
+
+
+/* SCROLL REVEAL */
+
+const reveals=document.querySelectorAll(
+'.card,.stat,.section-title,.cta h2,.cta p'
+);
+
+const revealObserver=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity='1';
+
+entry.target.style.transform='translateY(0)';
+
+}
+
+});
+
+},{threshold:0.15});
+
+reveals.forEach(el=>{
+
+el.style.opacity='0';
+el.style.transform='translateY(50px)';
+el.style.transition='all .8s ease';
+
+revealObserver.observe(el);
+
+});
+
+
+/* NAVBAR EFFECT */
+
+window.addEventListener('scroll',()=>{
+
+const nav=document.querySelector('nav');
+
+if(window.scrollY>80){
+
+nav.style.background='rgba(5,10,20,.88)';
+nav.style.boxShadow='0 10px 40px rgba(0,0,0,.4)';
+
+}else{
+
+nav.style.background='rgba(5,10,20,.4)';
+nav.style.boxShadow='none';
+
+}
+
+});
+
+});
+
+</script>
+/* PREMIUM GLOW */
+
+.card{
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+top:-100%;
+left:-100%;
+width:250%;
+height:250%;
+background:
+linear-gradient(
+45deg,
+transparent,
+rgba(255,255,255,.05),
+transparent
+);
+
+transform:rotate(25deg);
+transition:1s;
+}
+
+.card:hover::before{
+top:100%;
+left:100%;
+}
+
+/* GOLD LINE */
+
+.section-title{
+position:relative;
+display:inline-block;
+left:50%;
+transform:translateX(-50%);
+}
+
+.section-title::after{
+content:'';
+position:absolute;
+left:50%;
+bottom:-15px;
+transform:translateX(-50%);
+width:120px;
+height:4px;
+background:
+linear-gradient(
+90deg,
+#00C3FF,
+#F5A623
+);
+border-radius:50px;
+}
+
+/* HERO TEXT ANIMATION */
+
+.hero h1{
+animation:heroGlow 4s infinite;
+}
+
+@keyframes heroGlow{
+
+0%{
+filter:drop-shadow(0 0 5px #1A56FF);
+}
+
+50%{
+filter:drop-shadow(0 0 30px #00C3FF);
+}
+
+100%{
+filter:drop-shadow(0 0 5px #F5A623);
+}
+
+}  
 </body>
 </html>
