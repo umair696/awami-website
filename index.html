@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -19,671 +19,539 @@
             --premium-gold: #F5A623;
             --jet-black: #050A14;
             --pure-white: #FFFFFF;
-            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; cursor: none; /* Custom Cursor */ }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-        body { background-color: var(--jet-black); color: var(--pure-white); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { 
+            background-color: var(--jet-black); 
+            color: var(--pure-white); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
 
-        /* Custom Cursor */
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--sky-blue); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(0, 195, 255, 0.5); position: fixed; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; }
-        
-        /* Language System */
-        .ur-text { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; display: none; line-height: 2.4; }
-        body.lang-ur .ur-text { display: block; }
-        body.lang-ur .en-text { display: none; }
-        body.lang-ur { direction: rtl; }
+        h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.02em; }
 
-        /* UI Components */
-        .glass-panel { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); border-radius: 15px; }
-        .section-padding { padding: 100px 5%; }
-        .section-title { text-align: center; font-size: 3rem; margin-bottom: 15px; background: linear-gradient(90deg, var(--sky-blue), var(--premium-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-subtitle { text-align: center; color: #A0AAB2; margin-bottom: 60px; font-size: 1.2rem; }
+        /* Premium UI Components */
+        .glass-panel { 
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-border); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px; 
+            transition: var(--transition-smooth);
+        }
         
-        .btn-primary { background: var(--jet-black); color: var(--premium-gold); border: 2px solid var(--premium-gold); padding: 15px 35px; border-radius: 30px; font-weight: 600; cursor: pointer; text-decoration: none; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-primary:hover { background: linear-gradient(90deg, var(--premium-gold), #e09612); color: var(--jet-black); transform: scale(1.05); box-shadow: 0 0 20px rgba(245, 166, 35, 0.4); }
+        .section-padding { padding: 120px 5%; }
+        .section-title { text-align: center; font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; background: linear-gradient(90deg, var(--pure-white), var(--sky-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { text-align: center; color: #8892B0; margin-bottom: 70px; font-size: 1.25rem; font-weight: 300; max-width: 700px; margin-inline: auto; }
         
-        /* Navbar */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(5, 10, 20, 0.85); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid var(--glass-border); transition: 0.3s; }
-        .logo { font-size: 28px; font-weight: 800; color: var(--pure-white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .btn-primary { 
+            background: var(--pure-white); 
+            color: var(--jet-black); 
+            padding: 16px 40px; 
+            border-radius: 40px; 
+            font-weight: 600; 
+            font-size: 1.1rem;
+            cursor: pointer; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px;
+            border: none;
+            transition: var(--transition-smooth); 
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2); }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--pure-white);
+            border: 1px solid var(--glass-border);
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        .btn-secondary:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
+
+        /* Navbar (Apple Style) */
+        nav { 
+            position: fixed; top: 0; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(5, 10, 20, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--pure-white); text-decoration: none; letter-spacing: -1px; }
         .logo span { color: var(--sky-blue); }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.3s; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--premium-gold); transition: 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-        .lang-toggle { background: transparent; color: white; border: 1px solid var(--glass-border); padding: 8px 20px; border-radius: 20px; transition: 0.3s; font-weight: bold; }
-        .lang-toggle:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { color: #A0AAB2; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--pure-white); }
 
-        /* Hero */
-        #hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        /* Cinematic Hero */
+        #hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-        .hero-logo { font-size: 6rem; font-weight: 800; background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 0 20px rgba(0, 195, 255, 0.3)); }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-        .hero-title { font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 0 40px rgba(255,255,255,0.1); }
-        .hero-title.ur-text { font-size: 3.5rem; }
-        .marquee { position: absolute; bottom: 0; width: 100%; background: var(--glass-bg); border-top: 1px solid var(--glass-border); padding: 15px 0; overflow: hidden; white-space: nowrap; color: var(--premium-gold); font-weight: 600; letter-spacing: 2px; }
-        .marquee span { display: inline-block; animation: scrollMarquee 25s linear infinite; }
-        @keyframes scrollMarquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,86,255,0.15) 0%, rgba(0,0,0,0) 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; }
+        .hero-title { font-size: 5.5rem; line-height: 1.05; margin-bottom: 25px; font-weight: 800; letter-spacing: -0.03em; }
+        .hero-subtitle { font-size: 1.5rem; color: #8892B0; font-weight: 300; margin-bottom: 40px; }
+        .cta-group { display: flex; gap: 20px; z-index: 10; }
 
-        /* Trust Bar */
-        .trust-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--dark-navy); padding: 40px 5%; position: relative; z-index: 10; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .stat { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
-        .stat:last-child { border: none; }
-        .stat h3 { font-size: 3rem; color: var(--sky-blue); font-weight: 800; }
+        /* Trust Stats Bar */
+        .trust-bar { display: grid; grid-template-columns: repeat(4, 1fr); padding: 50px 5%; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); background: rgba(255,255,255,0.01); }
+        .stat-item { text-align: center; border-right: 1px solid var(--glass-border); }
+        .stat-item:last-child { border: none; }
+        .stat-item h3 { font-size: 3.5rem; color: var(--pure-white); font-weight: 800; margin-bottom: 5px; }
+        .stat-item p { color: #8892B0; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Galaxy of Services (Grid) */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .service-card { padding: 40px; position: relative; overflow: hidden; }
-        .service-card i { font-size: 3rem; margin-bottom: 20px; transition: 0.3s; }
-        .service-card:hover i { transform: scale(1.2); color: var(--accent-color); }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 2px solid transparent; border-radius: 15px; transition: 0.4s; }
-        .service-card:hover::before { border-color: var(--accent-color); box-shadow: inset 0 0 20px rgba(255,255,255,0.05); }
-        .service-card:hover { transform: translateY(-10px); }
-        .badge { position: absolute; top: 20px; right: 20px; background: #25D366; color: black; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; }
+        /* Services Grid (The Galaxy) */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .service-card { padding: 50px 40px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .service-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 30px; background: linear-gradient(135deg, var(--sky-blue), var(--primary-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 600; }
+        .service-card p { color: #8892B0; font-weight: 300; flex-grow: 1; }
+        .badge { position: absolute; top: 25px; right: 25px; background: rgba(0, 195, 255, 0.1); color: var(--sky-blue); border: 1px solid var(--sky-blue); padding: 6px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; }
 
-        /* Detailed Services (Tabs) */
-        .tabs-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
-        .tab-btn { background: var(--glass-bg); color: white; border: 1px solid var(--glass-border); padding: 12px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-weight: 600; }
-        .tab-btn.active, .tab-btn:hover { background: var(--primary-blue); border-color: var(--sky-blue); box-shadow: 0 0 15px rgba(26, 86, 255, 0.5); }
-        .tab-content { display: none; animation: fadeIn 0.5s ease; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .workflow-timeline { display: flex; justify-content: space-between; position: relative; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--glass-border); }
-        .workflow-step { text-align: center; flex: 1; }
+        /* Detailed Services Info */
+        .deep-dive { background: radial-gradient(circle at right, rgba(10,26,110,0.4) 0%, var(--jet-black) 100%); }
+        .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+        .feature-row:nth-child(even) { direction: rtl; }
+        .feature-row:nth-child(even) > * { direction: ltr; }
+        .feature-text h3 { font-size: 2.5rem; margin-bottom: 20px; color: var(--sky-blue); }
+        .feature-text p { color: #8892B0; font-size: 1.1rem; margin-bottom: 20px; }
+        .feature-list { list-style: none; }
+        .feature-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: var(--pure-white); }
+        .feature-list li i { color: #25D366; font-size: 1.2rem; }
+        .feature-visual { background: var(--glass-bg); border: 1px solid var(--glass-border); height: 400px; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 5rem; color: rgba(255,255,255,0.1); }
 
-        /* Pricing Page */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .price-card { padding: 40px; text-align: center; position: relative; display: flex; flex-direction: column; }
-        .price-card.pro { border-color: var(--premium-gold); transform: scale(1.05); background: rgba(245, 166, 35, 0.05); z-index: 2; }
-        .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--sky-blue); margin: 20px 0; }
-        .price-card ul { list-style: none; text-align: left; margin-bottom: 30px; flex-grow: 1; }
-        .price-card ul li { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 10px; }
-        .price-card ul li i { color: #25D366; margin-top: 4px; }
+        /* Pricing Architecture */
+        .pricing-section { background: var(--jet-black); }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .price-card { padding: 50px 40px; display: flex; flex-direction: column; }
+        .price-card.pro { background: linear-gradient(180deg, rgba(26,86,255,0.1) 0%, rgba(255,255,255,0.02) 100%); border-color: var(--primary-blue); transform: scale(1.02); }
+        .price-tier { color: var(--sky-blue); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px; }
+        .price-amount { font-size: 3rem; font-weight: 800; color: var(--pure-white); margin-bottom: 30px; letter-spacing: -1px; }
+        .price-card ul { list-style: none; flex-grow: 1; margin-bottom: 40px; }
+        .price-card ul li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: #A0AAB2; display: flex; align-items: flex-start; gap: 12px; }
+        .price-card ul li i { color: var(--pure-white); margin-top: 5px; font-size: 0.9rem; }
 
-        /* Portfolio Masonry */
-        .portfolio-masonry { column-count: 3; column-gap: 20px; }
-        .portfolio-item { break-inside: avoid; margin-bottom: 20px; position: relative; border-radius: 15px; overflow: hidden; cursor: pointer; }
-        .portfolio-item img { width: 100%; display: block; transition: 0.5s; }
-        .portfolio-overlay { position: absolute; inset: 0; background: rgba(5, 10, 20, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.5s; }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        /* Categories Matrix (For smaller packages) */
+        .matrix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .matrix-card { padding: 40px; }
+        .matrix-card h4 { font-size: 1.5rem; margin-bottom: 25px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .matrix-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .matrix-row:last-child { border: none; }
+        .matrix-title { color: #A0AAB2; }
+        .matrix-price { font-weight: 600; color: var(--sky-blue); }
 
-        /* Order Tracking */
-        .tracking-portal { max-width: 800px; margin: 0 auto; padding: 50px; background: radial-gradient(circle at top, rgba(0, 195, 255, 0.1), transparent); }
-        .input-group { display: flex; gap: 15px; margin-top: 30px; }
-        .input-group input { flex: 1; padding: 18px 25px; background: rgba(0,0,0,0.6); border: 1px solid var(--glass-border); color: white; border-radius: 10px; font-size: 1rem; outline: none; transition: 0.3s; }
-        .input-group input:focus { border-color: var(--sky-blue); box-shadow: 0 0 15px rgba(0, 195, 255, 0.2); }
+        /* Live Order Tracking */
+        .tracking-portal { max-width: 700px; margin: 0 auto; padding: 60px; text-align: center; }
+        .tracking-portal input { width: 100%; padding: 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-size: 1.1rem; margin-bottom: 20px; outline: none; transition: var(--transition-smooth); font-family: 'Inter', sans-serif; }
+        .tracking-portal input:focus { border-color: var(--sky-blue); background: rgba(255,255,255,0.08); }
+        
+        .timeline { display: flex; justify-content: space-between; margin-top: 50px; position: relative; }
+        .timeline::before { content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: var(--glass-border); z-index: 1; }
+        .stage { position: relative; z-index: 2; background: var(--jet-black); padding: 0 10px; }
+        .stage-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--glass-bg); border: 2px solid var(--glass-border); margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; }
+        .stage.active .stage-dot { border-color: var(--sky-blue); color: var(--sky-blue); box-shadow: 0 0 20px rgba(0,195,255,0.3); }
+        .stage.done .stage-dot { background: var(--pure-white); border-color: var(--pure-white); color: var(--jet-black); }
+        .stage span { font-size: 0.85rem; font-weight: 600; color: #8892B0; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Native Forms Hub (Replaces Tally) */
-        .forms-hub { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
-        .form-nav { display: flex; flex-direction: column; gap: 10px; }
-        .form-nav-btn { background: var(--glass-bg); text-align: left; padding: 20px; border: 1px solid var(--glass-border); border-radius: 10px; color: white; cursor: pointer; transition: 0.3s; font-size: 1.1rem; display: flex; justify-content: space-between; align-items: center; }
-        .form-nav-btn.active, .form-nav-btn:hover { background: var(--primary-blue); border-color: var(--sky-blue); }
-        .native-form { display: none; animation: fadeIn 0.5s; }
+        /* Native Client Hub (Forms & Payments) */
+        .hub-container { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
+        .hub-sidebar { display: flex; flex-direction: column; gap: 15px; }
+        .hub-btn { background: transparent; border: 1px solid var(--glass-border); padding: 20px; border-radius: 15px; color: #8892B0; text-align: left; font-size: 1.1rem; cursor: pointer; transition: var(--transition-smooth); display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-family: 'Inter', sans-serif; }
+        .hub-btn.active, .hub-btn:hover { background: var(--pure-white); color: var(--jet-black); }
+        
+        .hub-content { padding: 50px; }
+        .native-form { display: none; animation: fadeIn 0.4s ease; }
         .native-form.active { display: flex; flex-direction: column; gap: 20px; }
-        .native-form input, .native-form textarea, .native-form select { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: white; border-radius: 10px; font-family: inherit; }
-        .native-form textarea { resize: vertical; min-height: 120px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .native-form input, .native-form select, .native-form textarea { width: 100%; padding: 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-family: 'Inter', sans-serif; outline: none; transition: 0.3s; }
+        .native-form input:focus, .native-form select:focus, .native-form textarea:focus { border-color: var(--pure-white); }
+        .native-form textarea { min-height: 150px; resize: vertical; }
 
-        /* Layout & Utilities */
-        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        /* Payment Accounts Grid */
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .pay-card { padding: 25px; border-radius: 15px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); }
+        .pay-card h5 { font-size: 1.1rem; color: #8892B0; margin-bottom: 10px; font-weight: 500; }
+        .pay-card .acc-num { font-size: 1.4rem; font-weight: 700; color: var(--pure-white); margin-bottom: 5px; font-family: monospace; }
+        .pay-card .acc-title { font-size: 0.9rem; color: var(--sky-blue); }
+
+        /* Trust Guard */
+        .trust-guard { background: linear-gradient(90deg, rgba(37,211,102,0.1) 0%, transparent 100%); border-left: 4px solid #25D366; padding: 20px 30px; border-radius: 0 10px 10px 0; margin-bottom: 40px; }
+
+        /* Utilities */
         .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Mobile */
-        @media (max-width: 992px) {
-            .split-layout, .forms-hub { grid-template-columns: 1fr; }
-            .portfolio-masonry { column-count: 2; }
-            .trust-bar { grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 1024px) {
+            .feature-row { grid-template-columns: 1fr; gap: 40px; }
+            .hub-container { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-title { font-size: 2.8rem; }
-            .input-group { flex-direction: column; }
-            .portfolio-masonry { column-count: 1; }
-            .trust-bar { grid-template-columns: 1fr; }
+            .hero-title { font-size: 3.5rem; }
+            .trust-bar { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .matrix-grid, .payment-grid { grid-template-columns: 1fr; }
+            .cta-group { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
     <nav>
-        <a href="#hero" class="logo">Awami<span>Rahnuma</span></a>
-        <div class="nav-links en-text">
+        <a href="#hero" class="logo">Awami<span>Rahnuma.</span></a>
+        <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#pricing">Pricing</a>
-            <a href="#portfolio">Portfolio</a>
             <a href="#tracking">Track Order</a>
-            <a href="#forms">Client Hub</a>
+            <a href="#hub">Client Hub</a>
         </div>
-        <div class="nav-links ur-text">
-            <a href="#services">ہماری سروسز</a>
-            <a href="#pricing">پیکجز</a>
-            <a href="#portfolio">پورٹ فولیو</a>
-            <a href="#tracking">آرڈر ٹریکنگ</a>
-            <a href="#forms">کلائنٹ پورٹل</a>
-        </div>
-        <button class="lang-toggle" onclick="toggleLanguage()">
-            <i class="fas fa-globe"></i> <span id="lang-text">اردو | EN</span>
-        </button>
     </nav>
 
     <section id="hero">
         <div id="particles-js"></div>
-        <div class="hero-logo">AR.</div>
+        <div class="hero-glow"></div>
         
-        <h1 class="hero-title en-text">Your Business. Our Mission.<br>Start the Digital Revolution.</h1>
-        <h1 class="hero-title ur-text">آپ کا بزنس، ہمارا مشن<br>ڈیجیٹل انقلاب شروع کریں</h1>
+        <h1 class="hero-title reveal active">Your Business.<br>Our Mission.</h1>
+        <p class="hero-subtitle reveal active" style="transition-delay: 0.1s;">Pakistan's Premier All-in-One Digital Solutions Agency.</p>
         
-        <p class="section-subtitle en-text" style="color: var(--pure-white); font-size: 1.5rem;">Pakistan's Premier All-in-One Digital Solutions Agency</p>
-        <p class="section-subtitle ur-text" style="color: var(--pure-white); font-size: 1.5rem;">پاکستان کی پریمیم آل-ان-ون ڈیجیٹل سولیوشنز ایجنسی</p>
-        
-        <div style="display: flex; gap: 20px; margin-top: 20px; z-index: 10;">
-            <a href="#forms" class="btn-primary en-text" onclick="switchFormTab('order')">Get Started Now <i class="fas fa-arrow-right"></i></a>
-            <a href="#forms" class="btn-primary ur-text" onclick="switchFormTab('order')">ابھی شروع کریں <i class="fas fa-arrow-left"></i></a>
-            
-            <a href="#services" class="btn-primary en-text" style="background: transparent; border-color: var(--sky-blue); color: white;">Explore Services</a>
-            <a href="#services" class="btn-primary ur-text" style="background: transparent; border-color: var(--sky-blue); color: white;">ہماری سروسز دیکھیں</a>
-        </div>
-
-        <div class="marquee">
-            <span>WhatsApp Automation ◆ High-Converting Video Ads ◆ Social Media Marketing ◆ Voice Over ◆ Web Development ◆ Graphic Design ◆ Branding ◆ Data Intelligence ◆ WhatsApp Automation ◆ High-Converting Video Ads ◆</span>
+        <div class="cta-group reveal active" style="transition-delay: 0.2s;">
+            <a href="#hub" class="btn-primary" onclick="switchTab('order')">Start the Revolution <i class="fas fa-arrow-right"></i></a>
+            <a href="#services" class="btn-secondary">Explore Ecosystem</a>
         </div>
     </section>
 
     <div class="trust-bar">
-        <div class="stat"><h3 class="counter" data-target="500">0</h3><p class="en-text">Projects Completed</p><p class="ur-text">مکمل پروجیکٹس</p></div>
-        <div class="stat"><h3 class="counter" data-target="95">0</h3><p class="en-text">% Client Retention</p><p class="ur-text">% کلائنٹ ریٹنشن</p></div>
-        <div class="stat"><h3>24/7</h3><p class="en-text">Support System</p><p class="ur-text">سپورٹ دستیاب</p></div>
-        <div class="stat"><h3>100%</h3><p class="en-text">Satisfaction Goal</p><p class="ur-text">گارنٹیڈ سروس</p></div>
+        <div class="stat-item"><h3 class="counter" data-target="500">0</h3><p>Projects</p></div>
+        <div class="stat-item"><h3 class="counter" data-target="95">0</h3><p>Retention %</p></div>
+        <div class="stat-item"><h3>24/7</h3><p>Support</p></div>
+        <div class="stat-item"><h3>100%</h3><p>Satisfaction</p></div>
     </div>
 
     <section id="services" class="section-padding reveal">
-        <h2 class="section-title en-text">The Galaxy of Services</h2>
-        <h2 class="section-title ur-text">ہماری پریمیم ڈیجیٹل خدمات</h2>
-        <p class="section-subtitle en-text">Everything you need to 10x your business under one roof.</p>
-        <p class="section-subtitle ur-text">آپ کے بزنس کو 10 گنا بڑھانے کا مکمل ایکو سسٹم ایک ہی چھت تلے۔</p>
+        <h2 class="section-title">The Complete Ecosystem</h2>
+        <p class="section-subtitle">We don't just run ads; we build fully automated systems that 10x your business. Everything you need, under one roof.</p>
         
         <div class="services-grid">
-            <div class="glass-panel service-card" style="--accent-color: #25D366;">
+            <div class="service-card glass-panel">
                 <div class="badge">TOP TIER</div>
-                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                <h3 class="en-text">WhatsApp Automation ⚡</h3><h3 class="ur-text">واٹس ایپ آٹومیشن ⚡</h3>
-                <p class="en-text mt-3">Eliminate 90% of your sales team's workload. Fully automated hybrid AI systems.</p>
-                <p class="ur-text mt-3">اپنی سیلز ٹیم کا 90% بوجھ ختم کریں۔ AI اور لائیو ایجنٹ کا ہائبرڈ ماڈل۔</p>
+                <i class="fab fa-whatsapp service-icon"></i>
+                <h3>WhatsApp Automation</h3>
+                <p>Eliminate 90% of your sales team's workload. Fully automated hybrid AI systems with Meta Cloud API.</p>
             </div>
-            <div class="glass-panel service-card" style="--accent-color: #FF6B6B;">
-                <i class="fas fa-video" style="color: #FF6B6B;"></i>
-                <h3 class="en-text">High-Converting Video Ads</h3><h3 class="ur-text">وائرل ویڈیو ایڈز</h3>
-                <p class="en-text mt-3">Hook your customer in the first 3 seconds with psychological editing.</p>
-                <p class="ur-text mt-3">نفسیاتی ایڈیٹنگ کے ذریعے پہلے 3 سیکنڈز میں کسٹمر کو پکڑیں۔</p>
+            <div class="service-card glass-panel">
+                <i class="fas fa-video service-icon"></i>
+                <h3>High-Converting Video Ads</h3>
+                <p>Hook your customer in the first 3 seconds with psychological editing and viral frameworks.</p>
             </div>
-            <div class="glass-panel service-card" style="--accent-color: #1A56FF;">
-                <i class="fas fa-bullhorn" style="color: #1A56FF;"></i>
-                <h3 class="en-text">Social Media Marketing</h3><h3 class="ur-text">سوشل میڈیا مارکیٹنگ</h3>
-                <p class="en-text mt-3">Not likes — actual sales. Advanced pixel tracking and retargeting.</p>
-                <p class="ur-text mt-3">لائکس نہیں، کوالیفائیڈ سیلز لائیں۔ ایڈوانس پکسل اور ٹارگٹنگ۔</p>
+            <div class="service-card glass-panel">
+                <i class="fas fa-bullseye service-icon"></i>
+                <h3>Social Media Marketing</h3>
+                <p>Not just likes — actual sales. Advanced pixel tracking, retargeting, and budget optimization.</p>
             </div>
-            <div class="glass-panel service-card" style="--accent-color: #F5A623;">
-                <i class="fas fa-microphone-alt" style="color: #F5A623;"></i>
-                <h3 class="en-text">Professional Voice Over</h3><h3 class="ur-text">پروفیشنل وائس اوور</h3>
-                <p class="en-text mt-3">Give your brand a voice. Commercial, corporate, and narrative styles.</p>
-                <p class="ur-text mt-3">آپ کے برانڈ کی باوقار آواز۔ کمرشل، کارپوریٹ اور تعلیمی موڈز۔</p>
+            <div class="service-card glass-panel">
+                <i class="fas fa-microphone-alt service-icon"></i>
+                <h3>Premium Voice Over</h3>
+                <p>Give your brand a voice. Commercial, corporate, and narrative styles recorded by professionals.</p>
             </div>
-            <div class="glass-panel service-card" style="--accent-color: #00C3FF;">
-                <i class="fas fa-laptop-code" style="color: #00C3FF;"></i>
-                <h3 class="en-text">Web & App Development</h3><h3 class="ur-text">ویب سائٹ ڈویلپمنٹ</h3>
-                <p class="en-text mt-3">Be online or be invisible. High-speed eCommerce solutions.</p>
-                <p class="ur-text mt-3">آن لائن موجودگی یا مارکیٹ سے باہر۔ تیز ترین ای کامرس ویب سائٹس۔</p>
+            <div class="service-card glass-panel">
+                <i class="fas fa-laptop-code service-icon"></i>
+                <h3>Web & App Development</h3>
+                <p>Lightning-fast, mobile-optimized eCommerce stores and landing pages designed to convert.</p>
             </div>
-            <div class="glass-panel service-card" style="--accent-color: #A855F7;">
-                <i class="fas fa-paint-brush" style="color: #A855F7;"></i>
-                <h3 class="en-text">Graphic Design & Branding</h3><h3 class="ur-text">گرافک ڈیزائننگ</h3>
-                <p class="en-text mt-3">International look, local price. Complete brand identity design.</p>
-                <p class="ur-text mt-3">انٹرنیشنل لک، لوکل قیمت۔ مکمل برانڈ شناخت اور لوگو ڈیزائن۔</p>
+            <div class="service-card glass-panel">
+                <i class="fas fa-paint-brush service-icon"></i>
+                <h3>Branding & Graphics</h3>
+                <p>International look at a local price. Complete brand identity, logos, and social media aesthetics.</p>
             </div>
         </div>
     </section>
 
-    <section class="section-padding reveal" style="background: rgba(10, 26, 110, 0.2);">
-        <h2 class="section-title en-text">Service Deep Dive</h2>
-        <h2 class="section-title ur-text">سروسز کی تفصیلی گائیڈ لائنز</h2>
-        
-        <div class="tabs-container en-text">
-            <button class="tab-btn active" onclick="openTab('det-wa', this)">WhatsApp Auto</button>
-            <button class="tab-btn" onclick="openTab('det-vid', this)">Video Ads</button>
-            <button class="tab-btn" onclick="openTab('det-web', this)">Web Dev</button>
-        </div>
-        <div class="tabs-container ur-text">
-            <button class="tab-btn active" onclick="openTab('det-wa', this)">واٹس ایپ آٹومیشن</button>
-            <button class="tab-btn" onclick="openTab('det-vid', this)">ویڈیو ایڈز</button>
-            <button class="tab-btn" onclick="openTab('det-web', this)">ویب سائٹ</button>
-        </div>
-
-        <div id="det-wa" class="tab-content active glass-panel" style="padding: 40px;">
-            <div class="split-layout">
-                <div>
-                    <h3 class="en-text" style="color: #25D366; font-size: 2rem;">A to Z Automation Setup</h3>
-                    <h3 class="ur-text" style="color: #25D366; font-size: 2rem;">A to Z مکمل آٹومیشن سیٹ اپ</h3>
-                    <p class="en-text mt-3">We build official Meta Cloud API integrations with dedicated VPS servers. Your bot will handle catalogs, smart routing, and seamless live-agent handover.</p>
-                    <p class="ur-text mt-3">ہم آفیشل کلاؤڈ API انٹیگریشن کرتے ہیں جس سے نمبر بین ہونے کا خطرہ صفر ہو جاتا ہے۔ انٹیلیجنس مینیو کسٹمرز کو فوراً ہینڈل کرتا ہے۔</p>
-                </div>
-                <div class="glass-panel" style="padding: 20px; border-color: #25D366;">
-                    <h4 class="en-text"><i class="fas fa-clipboard-list"></i> Client Requirements</h4>
-                    <h4 class="ur-text"><i class="fas fa-clipboard-list"></i> کلائنٹ سے مطلوبہ چیزیں</h4>
-                    <ul style="list-style: none; margin-top: 15px; color: #ccc; line-height: 2;">
-                        <li class="en-text">✅ Fresh WhatsApp Number</li><li class="ur-text">✅ بالکل نیا یا فریش واٹس ایپ نمبر</li>
-                        <li class="en-text">✅ Meta Business Manager Access</li><li class="ur-text">✅ فیس بک بزنس مینیجر اکاؤنٹ</li>
-                        <li class="en-text">✅ Business FAQs & Menu details</li><li class="ur-text">✅ بزنس کی بنیادی معلومات اور مینیو</li>
-                    </ul>
-                </div>
+    <section class="section-padding deep-dive reveal">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>A to Z Automation Setup</h3>
+                <p>We build official Meta Cloud API integrations with dedicated VPS servers. Your bot will handle catalogs, smart routing, and seamless live-agent handover flawlessly.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Server Buying & Configuration</li>
+                    <li><i class="fas fa-check-circle"></i> Official Meta API Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Intelligence Menu & Logic Building</li>
+                    <li><i class="fas fa-check-circle"></i> Hybrid System (AI + Live Agent)</li>
+                </ul>
             </div>
-            <div class="workflow-timeline">
-                <div class="workflow-step en-text">1. Server Buying</div><div class="workflow-step ur-text">1. سرور کی خریداری</div>
-                <div class="workflow-step en-text">2. API Setup</div><div class="workflow-step ur-text">2. آفیشل API انٹیگریشن</div>
-                <div class="workflow-step en-text">3. Logic Building</div><div class="workflow-step ur-text">3. مینیو اور فلو ڈیزائن</div>
-                <div class="workflow-step en-text">4. Hybrid Testing</div><div class="workflow-step ur-text">4. ہائبرڈ سسٹم ٹیسٹنگ</div>
-            </div>
+            <div class="feature-visual"><i class="fas fa-robot"></i></div>
         </div>
-        </section>
+    </section>
 
-    <section id="pricing" class="section-padding reveal">
-        <h2 class="section-title en-text">The Pricing That Makes Competitors Invisible</h2>
-        <h2 class="section-title ur-text">شفاف قیمتیں، شاندار نتائج</h2>
-        
-        <div class="glass-panel" style="background: rgba(245, 166, 35, 0.1); border-left: 4px solid var(--premium-gold); padding: 15px; text-align: center; margin-bottom: 30px;">
-            <span class="en-text">💡 <strong>Disclaimer:</strong> Ad budgets are separate. These are our management & service fees.</span>
-            <span class="ur-text">💡 <strong>اہم نوٹ:</strong> اشتہار کا بجٹ آپ کا اپنا ہوگا۔ یہ صرف ہماری سروس اور مینجمنٹ فیس ہے۔</span>
-        </div>
+    <section id="pricing" class="section-padding pricing-section reveal">
+        <h2 class="section-title">Transparent Pricing</h2>
+        <p class="section-subtitle">No hidden fees. Pure value. These packages represent our management and service fees (Ad budgets are separate).</p>
 
-        <h3 class="en-text" style="color: #25D366; text-align: center;">1. WhatsApp Automation Packages</h3>
-        <h3 class="ur-text" style="color: #25D366; text-align: center;">1. واٹس ایپ آٹومیشن پیکجز</h3>
+        <h3 style="text-align: center; margin-bottom: 40px; color: var(--pure-white);">1. WhatsApp Automation</h3>
         <div class="pricing-grid">
-            <div class="glass-panel price-card">
-                <h4 class="en-text">Startup Automation</h4><h4 class="ur-text">اسٹارٹ اپ آٹومیشن</h4>
+            <div class="price-card glass-panel">
+                <div class="price-tier">Startup</div>
                 <div class="price-amount">Rs. 30,000</div>
                 <ul>
-                    <li class="en-text"><i class="fas fa-check"></i> Basic menu setup</li><li class="ur-text"><i class="fas fa-check"></i> بنیادی مینیو سیٹ اپ</li>
-                    <li class="en-text"><i class="fas fa-check"></i> 10 Auto-replies</li><li class="ur-text"><i class="fas fa-check"></i> 10 آٹو ریپلائیز</li>
-                    <li class="en-text"><i class="fas fa-check"></i> FB API Setup</li><li class="ur-text"><i class="fas fa-check"></i> فیس بک API سیٹ اپ</li>
+                    <li><i class="fas fa-check"></i> Basic Menu Setup</li>
+                    <li><i class="fas fa-check"></i> 10 Auto-Replies</li>
+                    <li><i class="fas fa-check"></i> Facebook API Setup</li>
+                    <li><i class="fas fa-times" style="color: #444;"></i> Server Fee Excluded</li>
                 </ul>
-                <button class="btn-primary" onclick="window.location.href='#forms'" style="width: 100%;">Select</button>
+                <button class="btn-secondary" onclick="window.location.href='#hub'; switchTab('order');" style="width: 100%; justify-content: center;">Select Plan</button>
             </div>
             
-            <div class="glass-panel price-card pro">
-                <div class="badge" style="background: var(--premium-gold); top: -15px;">RECOMMENDED</div>
-                <h4 class="en-text">Business Pro</h4><h4 class="ur-text">بزنس پرو</h4>
-                <div class="price-amount" style="color: var(--premium-gold);">Rs. 65,000</div>
+            <div class="price-card glass-panel pro">
+                <div class="price-tier" style="color: var(--pure-white);">Business Pro</div>
+                <div class="price-amount">Rs. 65,000</div>
                 <ul>
-                    <li class="en-text"><i class="fas fa-check"></i> Multi-level menu</li><li class="ur-text"><i class="fas fa-check"></i> ملٹی لیول مینیو</li>
-                    <li class="en-text"><i class="fas fa-check"></i> 30 Auto-replies</li><li class="ur-text"><i class="fas fa-check"></i> 30 آٹو ریپلائیز</li>
-                    <li class="en-text"><i class="fas fa-check"></i> AI + Live Agent Hybrid</li><li class="ur-text"><i class="fas fa-check"></i> ہائبرڈ ماڈل (AI + ایجنٹ)</li>
+                    <li><i class="fas fa-check"></i> Multi-Level Menu Logic</li>
+                    <li><i class="fas fa-check"></i> 30 Auto-Replies</li>
+                    <li><i class="fas fa-check"></i> Hybrid Model (AI + Agent)</li>
+                    <li><i class="fas fa-times" style="color: #444;"></i> Server Fee Excluded</li>
                 </ul>
-                <button class="btn-primary" onclick="window.location.href='#forms'" style="width: 100%;">Select</button>
+                <button class="btn-primary" onclick="window.location.href='#hub'; switchTab('order');" style="width: 100%; justify-content: center;">Most Popular</button>
             </div>
 
-            <div class="glass-panel price-card">
-                <h4 class="en-text">Enterprise All-Inclusive</h4><h4 class="ur-text">انٹرپرائز آل انکلوسیو</h4>
+            <div class="price-card glass-panel">
+                <div class="price-tier">Enterprise</div>
                 <div class="price-amount">Rs. 1,50,000</div>
                 <ul>
-                    <li class="en-text"><i class="fas fa-check"></i> Unlimited Custom Logic</li><li class="ur-text"><i class="fas fa-check"></i> لامحدود کسٹم لاجک</li>
-                    <li class="en-text"><i class="fas fa-check"></i> Google Sheets Live Tracking</li><li class="ur-text"><i class="fas fa-check"></i> گوگل شیٹس ڈیٹا بیس</li>
-                    <li class="en-text"><i class="fas fa-check"></i> 1 Year VPS Included</li><li class="ur-text"><i class="fas fa-check"></i> 1 سال کی سرور فیس شامل</li>
+                    <li><i class="fas fa-check"></i> Unlimited Custom Logic</li>
+                    <li><i class="fas fa-check"></i> Live Order Tracking DB</li>
+                    <li><i class="fas fa-check"></i> Google Sheets Integration</li>
+                    <li><i class="fas fa-check" style="color: #25D366;"></i> 1 Year VPS Included</li>
                 </ul>
-                <button class="btn-primary" onclick="window.location.href='#forms'" style="width: 100%;">Select</button>
+                <button class="btn-secondary" onclick="window.location.href='#hub'; switchTab('order');" style="width: 100%; justify-content: center;">Select Plan</button>
             </div>
         </div>
 
-        <div class="split-layout" style="margin-top: 60px;">
-            <div class="glass-panel" style="padding: 30px;">
-                <h4 class="en-text" style="color: #FF6B6B; margin-bottom: 20px;"><i class="fas fa-video"></i> Video Ads & Editing</h4>
-                <h4 class="ur-text" style="color: #FF6B6B; margin-bottom: 20px;"><i class="fas fa-video"></i> ویڈیو ایڈز اور ایڈیٹنگ</h4>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="border-bottom: 1px solid var(--glass-border);">
-                        <td style="padding: 10px 0;" class="en-text">Basic Short Ad (30s)</td><td style="padding: 10px 0;" class="ur-text">شارٹ ایڈ (30 سیکنڈ)</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 1,000</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--glass-border);">
-                        <td style="padding: 10px 0;" class="en-text">Standard Business Ad</td><td style="padding: 10px 0;" class="ur-text">اسٹینڈرڈ بزنس ایڈ</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 2,500</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px 0;" class="en-text">Premium Commercial Combo</td><td style="padding: 10px 0;" class="ur-text">پریمیم کمرشل کمبو</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 5,000</td>
-                    </tr>
-                </table>
+        <div class="matrix-grid">
+            <div class="matrix-card glass-panel">
+                <h4>Social Media Marketing</h4>
+                <div class="matrix-row"><span class="matrix-title">Basic Growth (15 Days)</span><span class="matrix-price">Rs. 4,000</span></div>
+                <div class="matrix-row"><span class="matrix-title">Pro Sales (1 Month)</span><span class="matrix-price">Rs. 8,000</span></div>
+                <div class="matrix-row"><span class="matrix-title">Advanced Conversion</span><span class="matrix-price">Rs. 15,000</span></div>
+                <div class="matrix-row"><span class="matrix-title">Brand Domination</span><span class="matrix-price">Rs. 25,000</span></div>
             </div>
-
-            <div class="glass-panel" style="padding: 30px;">
-                <h4 class="en-text" style="color: #1A56FF; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> Social Media Marketing</h4>
-                <h4 class="ur-text" style="color: #1A56FF; margin-bottom: 20px;"><i class="fas fa-bullhorn"></i> سوشل میڈیا مارکیٹنگ</h4>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="border-bottom: 1px solid var(--glass-border);">
-                        <td style="padding: 10px 0;" class="en-text">Basic Growth (15 days)</td><td style="padding: 10px 0;" class="ur-text">بیسک گروتھ (15 دن)</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 4,000</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--glass-border);">
-                        <td style="padding: 10px 0;" class="en-text">Advanced Conversion (1 mth)</td><td style="padding: 10px 0;" class="ur-text">ایڈوانس کنورژن (1 ماہ)</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 15,000</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px 0;" class="en-text">Brand Domination Funnel</td><td style="padding: 10px 0;" class="ur-text">برانڈ ڈومینیشن فنل</td>
-                        <td style="text-align: right; color: var(--sky-blue);">Rs. 25,000</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="section-padding reveal" style="background: rgba(10, 26, 110, 0.1);">
-        <h2 class="section-title en-text">Creative Showcase</h2>
-        <h2 class="section-title ur-text">ہمارا شاندار پورٹ فولیو</h2>
-        
-        <div class="portfolio-masonry">
-            <div class="portfolio-item glass-panel">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="SMM Project">
-                <div class="portfolio-overlay">
-                    <i class="fas fa-play-circle" style="font-size: 3rem; color: var(--sky-blue); margin-bottom: 15px;"></i>
-                    <h4 class="en-text">Real Estate Video Ad</h4><h4 class="ur-text">ریل اسٹیٹ ویڈیو ایڈ</h4>
-                    <p>+300% Conversion</p>
-                </div>
-            </div>
-            <div class="portfolio-item glass-panel">
-                <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&q=80" alt="Web Dev Project">
-                <div class="portfolio-overlay">
-                    <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--premium-gold); margin-bottom: 15px;"></i>
-                    <h4 class="en-text">eCommerce Platform</h4><h4 class="ur-text">ای کامرس ویب سائٹ</h4>
-                    <p>Loading speed < 1s</p>
-                </div>
-            </div>
-            <div class="portfolio-item glass-panel">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80" alt="WhatsApp Bot Project">
-                <div class="portfolio-overlay">
-                    <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 15px;"></i>
-                    <h4 class="en-text">Hybrid Automation Bot</h4><h4 class="ur-text">آٹومیشن بوٹ</h4>
-                    <p>Handles 500+ daily chats</p>
-                </div>
+            <div class="matrix-card glass-panel">
+                <h4>Video, Web & Graphics</h4>
+                <div class="matrix-row"><span class="matrix-title">Short Video Ad (30s)</span><span class="matrix-price">Rs. 1,000</span></div>
+                <div class="matrix-row"><span class="matrix-title">Premium Commercial</span><span class="matrix-price">Rs. 4,000</span></div>
+                <div class="matrix-row"><span class="matrix-title">Logo & Graphics Bundle</span><span class="matrix-price">Rs. 1,200</span></div>
+                <div class="matrix-row"><span class="matrix-title">Landing Page / Web Dev</span><span class="matrix-price">Rs. 10,000+</span></div>
             </div>
         </div>
     </section>
 
     <section id="tracking" class="section-padding reveal">
-        <h2 class="section-title en-text">Live Order Tracking Portal</h2>
-        <h2 class="section-title ur-text">لائیو آرڈر ٹریکنگ پورٹل</h2>
-        <p class="section-subtitle en-text">The ultimate trust builder. Track your project live.</p>
-        <p class="section-subtitle ur-text">پاکستان میں پہلی بار، آرڈر آئی ڈی کے ذریعے لائیو ٹریکنگ۔</p>
+        <h2 class="section-title">Live Order Tracking</h2>
+        <p class="section-subtitle">We build trust through transparency. Enter your Order ID to monitor your project's real-time progress.</p>
         
         <div class="tracking-portal glass-panel">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: #25D366; margin-bottom: 10px;"></i>
-                <h4 class="en-text">Security: 2-factor verification</h4>
-                <h4 class="ur-text">سیکیورٹی: 2 فیکٹر ویریفیکیشن</h4>
-                <p class="en-text" style="color: #aaa; font-size: 0.9rem;">Your privacy is our responsibility.</p>
-                <p class="ur-text" style="color: #aaa; font-size: 0.9rem;">آپ کی پرائیویسی ہماری ذمہ داری ہے۔</p>
-            </div>
-
-            <form onsubmit="event.preventDefault(); document.getElementById('tracking-result').style.display='flex';" class="input-group">
-                <input type="text" placeholder="Enter Order ID / آرڈر آئی ڈی" required>
-                <input type="text" placeholder="WhatsApp Name / واٹس ایپ نام" required>
-                <button type="submit" class="btn-primary" style="border-radius: 10px;">TRACK</button>
-            </form>
-
-            <div id="tracking-result" style="display: none; justify-content: space-between; margin-top: 50px; position: relative; animation: fadeIn 0.8s;">
-                <div style="position: absolute; top: 20px; left: 10%; width: 80%; height: 2px; background: rgba(255,255,255,0.2); z-index: 1;">
-                    <div style="width: 50%; height: 100%; background: #25D366; box-shadow: 0 0 10px #25D366;"></div>
-                </div>
-                
-                <div style="text-align: center; z-index: 2; position: relative;">
-                    <div style="width: 40px; height: 40px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: black;"><i class="fas fa-check"></i></div>
-                    <span class="en-text" style="font-size: 0.8rem; font-weight: bold; color: #25D366;">Placed</span><span class="ur-text" style="font-size: 0.8rem; font-weight: bold; color: #25D366;">آرڈر بک</span>
-                </div>
-                <div style="text-align: center; z-index: 2; position: relative;">
-                    <div style="width: 40px; height: 40px; background: var(--jet-black); border: 2px solid var(--sky-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: var(--sky-blue); box-shadow: 0 0 15px var(--sky-blue);"><i class="fas fa-cogs"></i></div>
-                    <span class="en-text" style="font-size: 0.8rem; font-weight: bold; color: var(--sky-blue);">In Progress (LIVE)</span><span class="ur-text" style="font-size: 0.8rem; font-weight: bold; color: var(--sky-blue);">کام جاری ہے</span>
-                </div>
-                <div style="text-align: center; z-index: 2; position: relative; opacity: 0.5;">
-                    <div style="width: 40px; height: 40px; background: var(--jet-black); border: 2px solid var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;"><i class="fas fa-box"></i></div>
-                    <span class="en-text" style="font-size: 0.8rem;">Delivered</span><span class="ur-text" style="font-size: 0.8rem;">مکمل</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="forms" class="section-padding reveal" style="background: rgba(10, 26, 110, 0.3); border-top: 1px solid var(--glass-border);">
-        <h2 class="section-title en-text">Interactive Client Hub</h2>
-        <h2 class="section-title ur-text">آفیشل کلائنٹ پورٹل</h2>
-        <p class="section-subtitle en-text">Everything happens right here. No external links.</p>
-        <p class="section-subtitle ur-text">تھرڈ پارٹی لنکس ختم! اب سب کچھ ہماری اپنی ویب سائٹ پر۔</p>
-        
-        <div class="forms-hub">
-            <div class="form-nav">
-                <button class="form-nav-btn active" onclick="switchFormTab('order')">
-                    <span class="en-text"><i class="fas fa-shopping-cart" style="color: var(--sky-blue);"></i> New Order Form</span>
-                    <span class="ur-text"><i class="fas fa-shopping-cart" style="color: var(--sky-blue);"></i> نیا آرڈر بک کریں</span>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="form-nav-btn" onclick="switchFormTab('complaint')">
-                    <span class="en-text"><i class="fas fa-headset" style="color: #FF6B6B;"></i> Complaint System</span>
-                    <span class="ur-text"><i class="fas fa-headset" style="color: #FF6B6B;"></i> کمپلینٹ رجسٹر کریں</span>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="form-nav-btn" onclick="switchFormTab('review')">
-                    <span class="en-text"><i class="fas fa-star" style="color: var(--premium-gold);"></i> Submit Review</span>
-                    <span class="ur-text"><i class="fas fa-star" style="color: var(--premium-gold);"></i> سروس کا ریویو دیں</span>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="form-nav-btn" onclick="switchFormTab('career')">
-                    <span class="en-text"><i class="fas fa-briefcase" style="color: #A855F7;"></i> Careers & Elite Network</span>
-                    <span class="ur-text"><i class="fas fa-briefcase" style="color: #A855F7;"></i> ایلیٹ نیٹ ورک جوائن کریں</span>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div class="glass-panel" style="padding: 40px; position: relative;">
-                
-                <form id="form-order" class="native-form active" onsubmit="mockSubmit(event)">
-                    <h3 class="en-text" style="color: var(--sky-blue); margin-bottom: 20px;">Place Your Order Securely</h3>
-                    <h3 class="ur-text" style="color: var(--sky-blue); margin-bottom: 20px;">اپنا آرڈر محفوظ طریقے سے درج کریں</h3>
-                    <input type="text" placeholder="Full Name / مکمل نام" required>
-                    <input type="tel" placeholder="WhatsApp Number / واٹس ایپ نمبر" required>
-                    <select required style="background: rgba(0,0,0,0.8);">
-                        <option value="" class="en-text">Select Service</option><option value="" class="ur-text">سروس منتخب کریں</option>
-                        <option value="wa">WhatsApp Automation</option>
-                        <option value="video">Video Ads & Editing</option>
-                        <option value="smm">Social Media Marketing</option>
-                        <option value="web">Web Development</option>
-                    </select>
-                    <textarea placeholder="Describe your business and requirements / اپنے بزنس اور ضرورت کی تفصیل لکھیں" required></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Submit Order</button>
-                </form>
-
-                <form id="form-complaint" class="native-form" onsubmit="mockSubmit(event)">
-                    <h3 class="en-text" style="color: #FF6B6B; margin-bottom: 20px;">Manager Direct Line</h3>
-                    <h3 class="ur-text" style="color: #FF6B6B; margin-bottom: 20px;">براہ راست مینیجر کو شکایت</h3>
-                    <input type="text" placeholder="Order ID / آرڈر آئی ڈی" required>
-                    <select required style="background: rgba(0,0,0,0.8);">
-                        <option value="">Issue Type / مسئلے کی قسم</option>
-                        <option value="delay">Delay in Delivery / ڈیلیوری میں تاخیر</option>
-                        <option value="quality">Quality Issue / کام پسند نہیں آیا</option>
-                        <option value="other">Other / دیگر</option>
-                    </select>
-                    <textarea placeholder="Detail your issue. We will resolve it within 24hrs / تفصیل لکھیں" required></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%; border-color: #FF6B6B; color: #FF6B6B;">Submit Complaint</button>
-                </form>
-
-                <form id="form-review" class="native-form" onsubmit="mockSubmit(event)">
-                    <h3 class="en-text" style="color: var(--premium-gold); margin-bottom: 20px;">Rate Our Service</h3>
-                    <h3 class="ur-text" style="color: var(--premium-gold); margin-bottom: 20px;">ہماری سروس کیسی لگی؟</h3>
-                    <input type="text" placeholder="Order ID / آرڈر آئی ڈی" required>
-                    <div style="display: flex; gap: 10px; font-size: 2rem; color: var(--premium-gold); justify-content: center; cursor: pointer;">
-                        <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <textarea placeholder="Write your honest review / اپنی ایماندارانہ رائے دیں" required></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Submit Review</button>
-                </form>
-
-                <form id="form-career" class="native-form" onsubmit="mockSubmit(event)">
-                    <h3 class="en-text" style="color: #A855F7; margin-bottom: 20px;">Join Global Elite Network</h3>
-                    <h3 class="ur-text" style="color: #A855F7; margin-bottom: 20px;">ایلیٹ نیٹ ورک کا حصہ بنیں</h3>
-                    <input type="text" placeholder="Full Name / مکمل نام" required>
-                    <input type="text" placeholder="Skill / مہارت (e.g. Video Editor)" required>
-                    <input type="url" placeholder="Portfolio Link / پورٹ فولیو کا لنک" required>
-                    <textarea placeholder="Why should we hire you? / ہم آپ کو کیوں منتخب کریں؟" required></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%; border-color: #A855F7; color: #A855F7;">Submit Application</button>
-                </form>
-
-                <div id="form-success" style="display: none; position: absolute; inset: 0; background: rgba(5,10,20,0.95); border-radius: 15px; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 10;">
-                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #25D366; margin-bottom: 20px;"></i>
-                    <h3 class="en-text">Submitted Successfully!</h3><h3 class="ur-text">کامیابی سے جمع ہو گیا!</h3>
-                    <p class="en-text" style="color: #aaa; margin-top: 10px;">Our system has recorded your data.</p><p class="ur-text" style="color: #aaa; margin-top: 10px;">ہمارے سسٹم نے آپ کا ڈیٹا محفوظ کر لیا ہے۔</p>
-                    <button class="btn-secondary" onclick="document.getElementById('form-success').style.display='none'" style="margin-top: 20px; padding: 10px 20px; background: transparent; border: 1px solid white; color: white; border-radius: 20px;">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding reveal">
-        <div class="split-layout">
-            <div>
-                <h2 class="section-title en-text" style="text-align: left;">100% Anti-Fraud Guarantee</h2>
-                <h2 class="section-title ur-text" style="text-align: right;">اینٹی فراڈ اور ریفنڈ گارنٹی</h2>
-                
-                <div class="glass-panel" style="padding: 20px; margin-top: 30px; border-left: 4px solid #25D366;">
-                    <h4 class="en-text"><i class="fas fa-undo"></i> Refund Policy</h4><h4 class="ur-text"><i class="fas fa-undo"></i> ریفنڈ پالیسی</h4>
-                    <p class="en-text" style="color: #ccc; font-size: 0.9rem; margin-top: 10px;">100% refund before work starts. Unlimited revisions during work until you are satisfied. (VPS/API costs non-refundable).</p>
-                    <p class="ur-text" style="color: #ccc; font-size: 0.9rem; margin-top: 10px;">کام شروع ہونے سے پہلے 100% ریفنڈ۔ کام کے دوران لامحدود ترامیم (سوائے سرور اور API فیس کے)۔</p>
-                </div>
+            <div class="trust-guard">
+                <p style="text-align: left; margin: 0; font-weight: 500; color: #25D366;">🔒 Security Protocol: 2-Factor Verification Required</p>
             </div>
             
-            <div class="glass-panel" style="padding: 40px; border-color: var(--premium-gold);">
-                <h3 class="en-text" style="color: var(--premium-gold); margin-bottom: 20px; text-align: center;">Verified Payment Methods</h3>
-                <h3 class="ur-text" style="color: var(--premium-gold); margin-bottom: 20px; text-align: center;">آفیشل پیمنٹ اکاؤنٹس</h3>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border);">
-                        <h5 style="color: #25D366;">EasyPaisa</h5>
-                        <p style="font-size: 1.1rem; font-weight: bold; margin: 5px 0;">0349-7892713</p>
-                        <p style="font-size: 0.8rem; color: #aaa;">Tazeem Akhtar</p>
+            <form onsubmit="event.preventDefault(); document.getElementById('tracking-result').style.display='block';">
+                <input type="text" placeholder="Enter Official Order ID" required>
+                <input type="text" placeholder="Enter Your Registered WhatsApp Name" required>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;">Track Progress</button>
+            </form>
+
+            <div id="tracking-result" style="display: none; margin-top: 60px; animation: fadeIn 0.8s;">
+                <div class="timeline">
+                    <div class="stage done">
+                        <div class="stage-dot"><i class="fas fa-check"></i></div>
+                        <span>Placed</span>
                     </div>
-                    <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border);">
-                        <h5 style="color: #FF6B6B;">JazzCash Till</h5>
-                        <p style="font-size: 1.1rem; font-weight: bold; margin: 5px 0;">981143326</p>
-                        <p style="font-size: 0.8rem; color: #aaa;">Umair CS</p>
+                    <div class="stage done">
+                        <div class="stage-dot"><i class="fas fa-check"></i></div>
+                        <span>Confirmed</span>
                     </div>
-                    <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border);">
-                        <h5 style="color: var(--sky-blue);">UBL Bank</h5>
-                        <p style="font-size: 1.1rem; font-weight: bold; margin: 5px 0;">0980242367194</p>
-                        <p style="font-size: 0.8rem; color: #aaa;">Umair Zulfiqar</p>
+                    <div class="stage active">
+                        <div class="stage-dot"><i class="fas fa-cogs"></i></div>
+                        <span style="color: var(--pure-white);">In Progress</span>
                     </div>
-                    <div style="background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border);">
-                        <h5 style="color: var(--premium-gold);">NayaPay</h5>
-                        <p style="font-size: 1.1rem; font-weight: bold; margin: 5px 0;">0309-4917910</p>
-                        <p style="font-size: 0.8rem; color: #aaa;">Umair Zulfiqar</p>
+                    <div class="stage">
+                        <div class="stage-dot"></div>
+                        <span>Delivered</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); background: #02050A;">
-        <h2 class="en-text" style="color: white; margin-bottom: 10px;">Awami Rahnuma Digital</h2>
-        <h2 class="ur-text" style="color: white; margin-bottom: 10px;">عوامی رہنما ڈیجیٹل ایجنسی</h2>
-        <p style="color: #666; font-size: 0.9rem;">&copy; 2026 Awami Rahnuma. All rights reserved. Gujranwala, Pakistan & Global Network.</p>
-    </footer>
+    <section id="hub" class="section-padding reveal" style="background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border);">
+        <h2 class="section-title">Client Operations Hub</h2>
+        <p class="section-subtitle">Secure, native, and seamless. Manage your orders, reviews, and payments without ever leaving our ecosystem.</p>
+        
+        <div class="hub-container">
+            <div class="hub-sidebar">
+                <button class="hub-btn active" onclick="switchTab('order', this)">
+                    <span><i class="fas fa-shopping-cart" style="margin-right: 10px;"></i> Place Order</span> <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                </button>
+                <button class="hub-btn" onclick="switchTab('pay', this)">
+                    <span><i class="fas fa-wallet" style="margin-right: 10px;"></i> Official Payments</span> <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                </button>
+                <button class="hub-btn" onclick="switchTab('complaint', this)">
+                    <span><i class="fas fa-headset" style="margin-right: 10px;"></i> Manager Direct Line</span> <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                </button>
+                <button class="hub-btn" onclick="switchTab('review', this)">
+                    <span><i class="fas fa-star" style="margin-right: 10px;"></i> Submit Review</span> <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                </button>
+                <button class="hub-btn" onclick="switchTab('career', this)">
+                    <span><i class="fas fa-globe" style="margin-right: 10px;"></i> Elite Network (Jobs)</span> <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
+                </button>
+            </div>
 
-    <a href="https://wa.me/923094917910?text=Hello%20Awami%20Rahnuma,%20I%20want%20to%2010x%20my%20business." target="_blank" style="position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2.5rem; box-shadow: 0 0 25px rgba(37, 211, 102, 0.6); z-index: 1000; text-decoration: none; animation: float 3s infinite;">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+            <div class="hub-content glass-panel">
+                
+                <form id="tab-order" class="native-form active" onsubmit="mockSubmit(event)">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Initiate Project</h3>
+                    <input type="text" placeholder="Full Legal Name" required>
+                    <input type="tel" placeholder="WhatsApp Business Number" required>
+                    <select required>
+                        <option value="">Select Primary Service Required</option>
+                        <option value="wa">WhatsApp Business Automation</option>
+                        <option value="video">High-Converting Video Ads</option>
+                        <option value="smm">Social Media Marketing</option>
+                        <option value="web">Web & App Development</option>
+                    </select>
+                    <textarea placeholder="Describe your business model and specific requirements..." required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Submit Secure Request</button>
+                </form>
+
+                <div id="tab-pay" class="native-form">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Verified Payment Channels</h3>
+                    <p style="color: #8892B0; margin-bottom: 20px;">100% Refund Policy before work commences. Use only the following authorized corporate accounts.</p>
+                    <div class="payment-grid">
+                        <div class="pay-card">
+                            <h5>EasyPaisa</h5>
+                            <div class="acc-num">0349-7892713</div>
+                            <div class="acc-title">Tazeem Akhtar</div>
+                        </div>
+                        <div class="pay-card">
+                            <h5>JazzCash Till ID</h5>
+                            <div class="acc-num">981143326</div>
+                            <div class="acc-title">Umair Customer Services</div>
+                        </div>
+                        <div class="pay-card">
+                            <h5>UBL Bank</h5>
+                            <div class="acc-num">0980242367194</div>
+                            <div class="acc-title">Umair Zulfiqar</div>
+                        </div>
+                        <div class="pay-card">
+                            <h5>NayaPay</h5>
+                            <div class="acc-num">0309-4917910</div>
+                            <div class="acc-title">Umair Zulfiqar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="tab-complaint" class="native-form" onsubmit="mockSubmit(event)">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Complaint Management</h3>
+                    <input type="text" placeholder="Official Order ID" required>
+                    <select required>
+                        <option value="">Nature of Issue</option>
+                        <option value="delay">Delay in Delivery Schedule</option>
+                        <option value="quality">Quality Revision Required</option>
+                        <option value="support">Support Unresponsiveness</option>
+                    </select>
+                    <textarea placeholder="Provide details. This goes directly to the Managing Director and will be resolved within 24 hours." required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: #FF6B6B; color: white; border: none;">Escalate Issue</button>
+                </form>
+
+                <form id="tab-review" class="native-form" onsubmit="mockSubmit(event)">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Client Feedback</h3>
+                    <input type="text" placeholder="Official Order ID" required>
+                    <div style="font-size: 2rem; color: var(--pure-white); margin-bottom: 10px; cursor: pointer; letter-spacing: 5px;">
+                        ☆☆☆☆☆
+                    </div>
+                    <textarea placeholder="Share your honest experience working with Awami Rahnuma..." required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Submit Review</button>
+                </form>
+
+                <form id="tab-career" class="native-form" onsubmit="mockSubmit(event)">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Join the Global Network</h3>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Primary Skill (e.g., Full Stack Developer, Video Editor)" required>
+                    <input type="url" placeholder="Portfolio / Work Link" required>
+                    <textarea placeholder="Why should Awami Rahnuma partner with you?" required></textarea>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Submit Application</button>
+                </form>
+
+                <div id="form-success" style="display: none; text-align: center; padding: 60px 20px;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--pure-white); margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 2rem; margin-bottom: 10px;">Submission Successful</h3>
+                    <p style="color: #8892B0; margin-bottom: 30px;">Our system has securely recorded your encrypted data.</p>
+                    <button class="btn-secondary" onclick="document.getElementById('form-success').style.display='none';">Acknowledge</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px 20px; border-top: 1px solid var(--glass-border); background: #02040A;">
+        <h2 style="color: var(--pure-white); font-weight: 800; letter-spacing: -1px; margin-bottom: 15px;">Awami<span style="color: var(--sky-blue);">Rahnuma.</span></h2>
+        <p style="color: #8892B0; font-size: 0.9rem; max-width: 500px; margin: 0 auto;">Pakistan's Premier All-in-One Digital Solutions Agency.<br>&copy; 2026 Awami Rahnuma Digital. All rights reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Custom Cursor Logic
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', function(e) {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-            setTimeout(() => { cursorOutline.style.left = e.clientX + 'px'; cursorOutline.style.top = e.clientY + 'px'; }, 50);
-        });
-        document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
-            el.addEventListener('mouseenter', () => { cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)'; cursorOutline.style.backgroundColor = 'rgba(0, 195, 255, 0.1)'; });
-            el.addEventListener('mouseleave', () => { cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)'; cursorOutline.style.backgroundColor = 'transparent'; });
-        });
-
-        // Dual Language Toggle Logic
-        let isUrdu = false;
-        if(navigator.language.includes('ur')) { toggleLanguage(true); } // Auto detect
-        
-        function toggleLanguage(forceUrdu = null) {
-            isUrdu = forceUrdu !== null ? forceUrdu : !isUrdu;
-            document.body.classList.toggle('lang-ur', isUrdu);
-            document.getElementById('lang-text').innerText = isUrdu ? 'EN | اردو' : 'اردو | EN';
-        }
-
-        // Tabs Logic (Services)
-        function openTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
-        }
-
-        // Native Forms Hub Logic
-        function switchFormTab(formId) {
-            // Remove active classes
+        // Native Hub Tab Switching
+        function switchTab(tabId, btn) {
             document.querySelectorAll('.native-form').forEach(f => f.classList.remove('active'));
-            document.querySelectorAll('.form-nav-btn').forEach(b => b.classList.remove('active'));
-            
-            // Add active class to selected
-            document.getElementById('form-' + formId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            if(btn) {
+                document.querySelectorAll('.hub-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                // If triggered from outside sidebar
+                document.querySelectorAll('.hub-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`.hub-sidebar button[onclick*="${tabId}"]`).classList.add('active');
+            }
+            document.getElementById('form-success').style.display = 'none';
+            document.getElementById('tab-' + tabId).classList.add('active');
         }
 
-        // Mock Form Submit to replace Tally.so
+        // Mock Submission for Native Forms
         function mockSubmit(e) {
             e.preventDefault();
-            document.getElementById('form-success').style.display = 'flex';
-            e.target.reset(); // clear form
+            document.querySelectorAll('.native-form').forEach(f => f.classList.remove('active'));
+            document.getElementById('form-success').style.display = 'block';
+            e.target.reset();
         }
 
-        // Counters
+        // Animated Counters
         const counters = document.querySelectorAll('.counter');
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                const inc = target / 150;
-                if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 20); } 
-                else { counter.innerText = target + (target === 500 ? '+' : '%'); }
+                const inc = target / 100;
+                if (count < target) { counter.innerText = Math.ceil(count + inc); setTimeout(updateCount, 25); } 
+                else { counter.innerText = target + (target === 500 ? '+' : ''); }
             };
-            setTimeout(updateCount, 1000);
+            setTimeout(updateCount, 800);
         });
 
-        // Scroll Reveal
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
+        // Intersection Observer for Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Particles.js (Cinematic Hero)
+        // Subtle Particles Background
         particlesJS('particles-js', {
-            "particles": { "number": { "value": 60 }, "color": { "value": ["#1A56FF", "#F5A623"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.5 }, "size": { "value": 3 }, "line_linked": { "enable": true, "distance": 150, "color": "#1A56FF", "opacity": 0.4 }, "move": { "enable": true, "speed": 2 } },
-            "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } },
-            "retina_detect": true
+            "particles": { "number": { "value": 40 }, "color": { "value": "#ffffff" }, "opacity": { "value": 0.1 }, "size": { "value": 2 }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.05 }, "move": { "enable": true, "speed": 1 } },
+            "interactivity": { "events": { "onhover": { "enable": false } } }, "retina_detect": true
         });
     </script>
 </body>
